@@ -8,6 +8,7 @@ import HeaderLayout from "./layouts";
 import SignUp from "./pages/SignUp";
 import OpeningPage from "./pages/OpeningPage";
 import TransiationPage from "./pages/TransitionPage";
+import Register from "./pages/Register";
 
 
 export const Router = createBrowserRouter(
@@ -18,6 +19,7 @@ export const Router = createBrowserRouter(
 
       <Route path="access" element={<HeaderLayout />}>
         <Route path="sign-in" element={<SignIn />} />
+        <Route path="register" element={<Register />} />
         <Route path="sign-up" element={<SignUp />} />
       </Route>
     </>
