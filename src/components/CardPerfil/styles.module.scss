@@ -3,16 +3,14 @@
 @media (max-width: 37.5rem) {
   .container-card-perfil {
     display: flex;
-    justify-content: space-between;
     align-items: center;
-
-    padding: 0 2.4rem 1.6rem;
+    padding-bottom: 1.6rem;
+    margin: 0 2.4rem;
   }
 
   .container-text-perfil {
     padding-left: 1.7rem;
-
-    width: 18.1rem;
+    width: 23.9rem;
 
     h1 {
       font-size: 1.8rem;
@@ -27,6 +25,15 @@
     }
   }
 
+  .container-text-button {
+    display: flex;
+    align-items: center;
+
+    h2 {
+      width: 16.3rem;
+    }
+  }
+
   .btn-perfil {
     margin-left: 1rem;
 
@@ -37,7 +44,10 @@
     border: none;
     background: #E6E6E6;
     box-shadow: 0px 0px 4px 0px rgba(0, 0, 0, 0.30) inset;
+  }
 
+  .btn-perfil-atived {
+    background: #7DD8FF !important;
   }
 
   .btn-perfil-eclipse {
@@ -55,10 +65,6 @@
     filter: drop-shadow(0.5px 0.5px 1px rgba(0, 0, 0, 0.30));
 
     transition: 0.5s ease-in-out;
-  }
-
-  .btn-perfil-atived {
-    background: #7DD8FF !important;
   }
 
   .left {
