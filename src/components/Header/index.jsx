@@ -3,8 +3,10 @@ import logoVozzImage from "../../assets/header/logo-vozz.svg";
 import arrowLeftIcon from "../../assets/header/arrow-left-gray.svg";
 
 export default function Header() {
+  /* const { activedRote } = useUser(); */
+
   return (
-    <header className={styles.conteiner}>
+    <header className={styles.conteiner} /* onClick={activedRote} */>
       <img
         className={styles["arrow-left"]}
         src={arrowLeftIcon}

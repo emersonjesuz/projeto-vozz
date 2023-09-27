@@ -6,6 +6,7 @@ import {
 import SignIn from "./pages/SignIn";
 import HeaderLayout from "./layouts";
 import SignUp from "./pages/SignUp";
+import Perfil from './pages/Perfil'
 
 export const Router = createBrowserRouter(
   createRoutesFromElements(
@@ -14,6 +15,7 @@ export const Router = createBrowserRouter(
       <Route path="access" element={<HeaderLayout />}>
         <Route path="sign-in" element={<SignIn />} />
         <Route path="sign-up" element={<SignUp />} />
+        <Route path="perfil" element={<Perfil />} />
       </Route>
     </>
   )
