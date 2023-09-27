@@ -6,13 +6,10 @@ import {
 import SignIn from "./pages/SignIn";
 import HeaderLayout from "./layouts";
 import SignUp from "./pages/SignUp";
-<<<<<<< HEAD
 import Perfil from './pages/Perfil'
-=======
 import OpeningPage from "./pages/OpeningPage";
 import TransiationPage from "./pages/TransitionPage";
 
->>>>>>> 5e505031eba18430e1386223a18c5c81900e8718
 
 export const Router = createBrowserRouter(
   createRoutesFromElements(
