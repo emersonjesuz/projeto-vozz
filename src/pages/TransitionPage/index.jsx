@@ -1,5 +1,5 @@
 import styles from "./styles.module.scss";
-import logoWhiteImage from "../../assets/logos/logo-white-complete.svg";
+import logoAnimation from "../../assets/logos/logo-vozz-animation.gif";
 import { useEffect } from "react";
 import { useNavigate } from "react-router";
 export default function TransiationPage() {
@@ -7,12 +7,11 @@ export default function TransiationPage() {
   useEffect(() => {
     setTimeout(() => {
       navegate("/onboarding");
-      console.log("ola2222");
     }, 4000);
   }, []);
   return (
     <div className={styles.container}>
-      <img src={logoWhiteImage} alt="logo" />
+      <img src={logoAnimation} alt="logo" />
     </div>
   );
 }
