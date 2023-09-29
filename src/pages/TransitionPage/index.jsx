@@ -6,7 +6,7 @@ export default function TransiationPage() {
   const navegate = useNavigate();
   useEffect(() => {
     setTimeout(() => {
-      navegate("/access/sign-in");
+      navegate("/onboarding");
     }, 4000);
   }, []);
   return (
