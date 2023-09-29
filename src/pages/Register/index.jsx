@@ -1,9 +1,8 @@
-import styles from "./styles.module.scss";
 import { useState } from "react";
-
-import errorIcon from "../../assets/icons/error-icon.svg";
 import checkIcon from "../../assets/icons/check.svg";
+import errorIcon from "../../assets/icons/error-icon.svg";
 import Input from "../../components/Input";
+import styles from "./styles.module.scss";
 
 function Register() {
   const [errors, setErrors] = useState({

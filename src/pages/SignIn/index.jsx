@@ -1,14 +1,20 @@
-import styles from "./styles.module.scss";
-import googleIcon from "../../assets/icons/google-icon.svg";
-import facebookIcon from "../../assets/icons/facebook-icon.svg";
-import { auth } from "../../services/firebase";
 import {
-  signInWithPopup,
-  GoogleAuthProvider,
   FacebookAuthProvider,
+  GoogleAuthProvider,
+  signInWithPopup,
 } from "firebase/auth";
+import { useState } from "react";
+import { Link } from "react-router-dom";
+import checkboxChekedIcon from "../../assets/icons/checkbox-checked.svg";
+import checkboxVoidIcon from "../../assets/icons/checkbox-void.svg";
+import facebookIcon from "../../assets/icons/facebook-icon.svg";
+import googleIcon from "../../assets/icons/google-icon.svg";
+import { auth } from "../../services/firebase";
+import styles from "./styles.module.scss";
 
 export default function SignIn() {
+  const [handleChekbox, setHandleCheckbox] = useState(false);
+
   async function googleSignIn(event) {
     event.preventDefault();
     const provider = new GoogleAuthProvider();
@@ -36,10 +42,45 @@ export default function SignIn() {
   return (
     <div className={styles.container}>
       <div className={styles["content-title"]}>
-        <h1>
-          Saiba o que está acontecendo na política brasileira e exerça a sua
-          cidadania
-        </h1>
+        <h1>Entre com a sua conta</h1>
+      </div>
+      <form className={styles["content-form"]}>
+        <div className={styles["box-input"]}>
+          <label htmlFor="email">E-mail</label>
+          <input
+            id="email"
+            placeholder="insira seu e-mail"
+            name="email"
+            type="text"
+          />
+        </div>
+        <div className={styles["box-input"]}>
+          <label htmlFor="password">Senha</label>
+          <input
+            id="password"
+            placeholder="insira sua senha"
+            name="password"
+            type="text"
+          />
+          <Link>Esqueci minha senha</Link>
+        </div>
+        <button className="button-blue">
+          <span>Entrar</span>
+        </button>
+        <div className={styles.checkbox}>
+          <img
+            onClick={() => setHandleCheckbox(!handleChekbox)}
+            src={handleChekbox ? checkboxChekedIcon : checkboxVoidIcon}
+            alt="checkbox"
+          />
+          <p className={styles["info-term"]}>Continuar conectado</p>
+        </div>
+      </form>
+
+      <div className={styles["line-or"]}>
+        <div></div>
+        <span>ou</span>
+        <div></div>
       </div>
       <div className={styles["content-buttons"]}>
         <button onClick={googleSignIn} className="button-white-border-blue">
@@ -48,24 +89,12 @@ export default function SignIn() {
         </button>
         <button onClick={facebookSignIn} className="button-white-border-blue">
           <img src={facebookIcon} alt="icone do facebook" />
-          <span>Continuar com Apple</span>
-        </button>
-        <div className={styles["line-or"]}>
-          <div></div>
-          <span>ou</span>
-          <div></div>
-        </div>
-        <button className="button-blue">
-          <span>Criar conta</span>
+          <span>Continuar com Facebook</span>
         </button>
       </div>
       <div className={styles["content-info"]}>
-        <p className={styles["info-term"]}>
-          Ao se inscrever, você concorda com nossos<span> Termos</span>, a{" "}
-          <span>Política de Privacidade</span> e o <span>Uso de Cookies</span>.
-        </p>
         <p className={styles["info-sign-in"]}>
-          Já tem uma conta? <span>Entrar</span>
+          Ainda não tem uma conta? <span>Cadastre-se </span>
         </p>
       </div>
     </div>
