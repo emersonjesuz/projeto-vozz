@@ -1,9 +1,9 @@
 import styles from "./styles.module.scss";
 import { useState } from "react";
-import closeEye from "../../assets/icons/close-eye.svg";
-import openEye from "../../assets/icons/open-eye.svg";
+
 import errorIcon from "../../assets/icons/error-icon.svg";
 import checkIcon from "../../assets/icons/check.svg";
+import Input from "../../components/Input";
 
 function Register() {
   const [errors, setErrors] = useState({
@@ -13,17 +13,12 @@ function Register() {
     password: "",
   });
 
-  const [showPassword, setShowPassword] = useState(false);
   const [name, setName] = useState("");
   const [email, setEmail] = useState("");
   const [birthday, setBirthday] = useState("");
   const [password, setPassword] = useState("");
 
-  const [nameValid, setNameValid] = useState(false);
-  const [emailValid, setEmailValid] = useState(false);
-  const [birthdayValid, setBirthdayValid] = useState(false);
-  const [passwordValid, setPasswordValid] = useState(false);
-  const [passwordFocused, setPasswordFocused] = useState(false);
+  const [showImage, setShowImage] = useState(false);
 
   //não esquecer o async await
   const handleSubmit = (event) => {
@@ -34,40 +29,22 @@ function Register() {
 
     if (!name) {
       newErrors.name = "O nome é obrigatório";
-      setNameValid(false);
-    } else {
-      setNameValid(true);
     }
 
-    if (!email) {
-      newErrors.email = "O email é obrigatório";
-      setEmailValid(false);
-    } else if (email.search(checkEmail) === -1) {
-      newErrors.email = "Email inválido";
-      setEmailValid(false);
-    } else {
-      setEmailValid(true);
+    if (!email || email.search(checkEmail) === -1) {
+      newErrors.email = !email ? "O email é obrigatório" : "Email inválido";
     }
 
     if (!birthday) {
       newErrors.birthday = "A data de nascimento é obrigatória";
-      setBirthdayValid(false);
-    } else {
-      setBirthdayValid(true);
     }
 
-    if (!password) {
-      newErrors.password = "Defina uma senha";
-      setPasswordValid(false);
-    } else if (password.length < 8) {
-      newErrors.password = "A senha deve ter pelo menos 8 caracteres";
-
-      setPasswordValid(false);
-    } else {
-      newErrors.password = "";
-      setPasswordValid(true);
+    if (!password || password.length < 8) {
+      newErrors.password = !password
+        ? "Defina uma senha"
+        : "A senha deve ter pelo menos 8 caracteres";
     }
-
+    setShowImage(true);
     setErrors(newErrors);
   };
 
@@ -84,161 +61,57 @@ function Register() {
 
         <form onSubmit={handleSubmit}>
           <div className={styles["form-register"]}>
-            <label
-              htmlFor="name"
-              className={errors.name ? styles["error-label"] : ""}
-            >
-              Nome
-            </label>
+            <Input
+              type="text"
+              label="Nome"
+              name="name"
+              placeholder="nome completo"
+              value={name}
+              handleChange={(event) => setName(event.target.value)}
+              showImage={showImage}
+              errorMessage={errors.name}
+              iconSrc={errors.name ? errorIcon : checkIcon}
+              alt={"ícone de verificação"}
+            />
+            <Input
+              type="text"
+              label="E-mail"
+              name="email"
+              placeholder="e-mail"
+              value={email}
+              handleChange={(event) => setEmail(event.target.value)}
+              showImage={showImage}
+              errorMessage={errors.email}
+              iconSrc={errors.email ? errorIcon : checkIcon}
+              alt={"ícone de erro"}
+            />
+            <Input
+              type="date"
+              label="Data de nascimento"
+              name="birthday"
+              placeholder="DD/MM/AAAA"
+              value={birthday}
+              handleChange={(event) => setBirthday(event.target.value)}
+              showImage={showImage}
+              errorMessage={errors.birthday}
+              iconSrc={errors.birthday ? errorIcon : checkIcon}
+              alt={"ícone de erro"}
+            />
+            <div className={styles["eyes"]}></div>
+            <Input
+              type={"password"}
+              label="Defina uma senha"
+              name="password"
+              placeholder="insira aqui sua senha"
+              value={password}
+              handleChange={(event) => setPassword(event.target.value)}
+              showImage={showImage}
+              errorMessage={errors.password}
+              iconSrc={errors.password ? errorIcon : checkIcon}
+              alt={"ícone de erro"}
+            />
 
-            <div
-              className={`${styles["input-wrapper"]} ${
-                errors.name ? styles["error-border"] : ""
-              }`}
-            >
-              <input
-                name="name"
-                placeholder="nome completo"
-                type="text"
-                value={name}
-                onChange={(event) => setName(event.target.value)}
-              />
-              {errors.name ? (
-                <img
-                  className={styles["error-icon"]}
-                  src={errorIcon}
-                  alt="Erro"
-                />
-              ) : nameValid ? (
-                <img
-                  className={styles["check-icon"]}
-                  src={checkIcon}
-                  alt="OK"
-                />
-              ) : null}
-            </div>
-            {errors.name && (
-              <span className={styles["message-error"]}>{errors.name}</span>
-            )}
-
-            <label
-              htmlFor="email"
-              className={errors.email ? styles["error-label"] : ""}
-            >
-              E-mail
-            </label>
-            <div
-              className={`${styles["input-wrapper"]} ${
-                errors.email ? styles["error-border"] : ""
-              }`}
-            >
-              <input
-                name="email"
-                placeholder="e-mail"
-                type="text"
-                value={email}
-                onChange={(event) => setEmail(event.target.value)}
-                className={errors.email ? styles["error-placeholder"] : ""}
-              />
-              {errors.email ? (
-                <img
-                  className={styles["error-icon"]}
-                  src={errorIcon}
-                  alt="Erro"
-                />
-              ) : emailValid ? (
-                <img
-                  className={styles["check-icon"]}
-                  src={checkIcon}
-                  alt="OK"
-                />
-              ) : null}
-            </div>
-            {errors.email && (
-              <span className={styles["message-error"]}>{errors.email}</span>
-            )}
-
-            <label
-              htmlFor="birthday"
-              className={errors.birthday ? styles["error-label"] : ""}
-            >
-              Data de Nascimento
-            </label>
-            <div
-              className={`${styles["input-wrapper"]} ${
-                errors.birthday ? styles["error-border"] : ""
-              }`}
-            >
-              <input
-                name="birthday"
-                placeholder="DD/MM/AAAA"
-                type="date"
-                value={birthday}
-                onChange={(event) => setBirthday(event.target.value)}
-              />
-              {errors.birthday ? (
-                <img
-                  className={styles["error-icon"]}
-                  src={errorIcon}
-                  alt="Erro"
-                />
-              ) : birthdayValid ? (
-                <img
-                  className={styles["check-icon"]}
-                  src={checkIcon}
-                  alt="OK"
-                />
-              ) : null}
-            </div>
-            {errors.birthday && (
-              <span className={styles["message-error"]}>{errors.birthday}</span>
-            )}
-
-            <label
-              htmlFor="password"
-              className={errors.password ? styles["error-label"] : ""}
-            >
-              Definir Senha
-            </label>
-            <div
-              className={`${styles["input-wrapper"]} ${
-                errors.password ? styles["error-border"] : ""
-              }`}
-            >
-              <input
-                name="password"
-                placeholder="insira aqui sua senha"
-                type={showPassword ? "text" : "password"}
-                value={password}
-                onChange={(event) => setPassword(event.target.value)}
-              />
-              <div className={styles["eyes"]}>
-                <img
-                  className={styles["password-show"]}
-                  src={showPassword ? closeEye : openEye}
-                  alt="mostrar senha"
-                  onClick={() => setShowPassword(!showPassword)}
-                />
-              </div>
-              {errors.password ? (
-                <img
-                  className={styles["error-icon"]}
-                  src={errorIcon}
-                  alt="Erro"
-                />
-              ) : passwordValid ? (
-                <img
-                  className={styles["check-icon"]}
-                  src={checkIcon}
-                  alt="OK"
-                />
-              ) : null}
-            </div>
-            {errors.password && (
-              <span className={styles["message-error"]}>{errors.password}</span>
-            )}
-
-            <div className={styles["btn-register"]}>
+            <div>
               <button type="submit">Inscrever-se</button>
             </div>
           </div>
