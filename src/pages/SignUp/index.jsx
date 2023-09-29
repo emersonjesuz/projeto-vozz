@@ -3,24 +3,18 @@ import {
   GoogleAuthProvider,
   signInWithPopup,
 } from "firebase/auth";
-import { useEffect, useState } from "react";
+import { useState } from "react";
+import { useNavigate } from "react-router-dom";
 import checkboxChekedIcon from "../../assets/icons/checkbox-checked.svg";
 import checkboxVoidIcon from "../../assets/icons/checkbox-void.svg";
 import facebookIcon from "../../assets/icons/facebook-icon.svg";
 import googleIcon from "../../assets/icons/google-icon.svg";
 import { auth } from "../../services/firebase";
 import styles from "./styles.module.scss";
-import useDataNavegate from "../../hooks/useDataNavegate/useDataNavegate";
-import { useNavigate } from "react-router-dom";
 
 export default function SignUn() {
   const [handleChekbox, setHandleCheckbox] = useState(false);
-  const { fillingNavegate } = useDataNavegate();
   const navegate = useNavigate();
-
-  useEffect(() => {
-    fillingNavegate("/onboarding");
-  }, []);
 
   async function googleSignIn(event) {
     event.preventDefault();
@@ -49,7 +43,7 @@ export default function SignUn() {
   function handleSubmitToRegister(event) {
     event.preventDefault();
     if (handleChekbox) {
-      navegate("/acess/register");
+      navegate("/access/register");
     }
   }
 

@@ -6,6 +6,8 @@ import {
 import SignIn from "./pages/SignIn";
 import HeaderLayout from "./layouts/HeaderLayout";
 import SignUp from "./pages/SignUp";
+import Register from "./pages/Register";
+import CheckPassword from "./pages/CheckPassword";
 import Perfil from "./pages/Perfil";
 import OpeningPage from "./pages/OpeningPage";
 import TransiationPage from "./pages/TransitionPage";
@@ -24,6 +26,8 @@ export const Router = createBrowserRouter(
           <Route path="sign-in" element={<SignIn />} />
           <Route path="sign-up" element={<SignUp />} />
           <Route path="perfil" element={<Perfil />} />
+          <Route path="register" element={<Register />} />
+          <Route path="check-password" element={<CheckPassword />} />
           <Route path="new-password" element={<NewPassword />} />
         </Route>
       </Route>

@@ -1,0 +1,147 @@
+@import "../../styles/fonts";
+@import "../../styles/colors";
+@media (max-width: 37.5rem) {
+
+    .container {
+        display: flex;
+        flex-direction: column;
+
+        input,
+        .input-password [type="text"] {
+            width: 32.7rem;
+            height: 4rem;
+            border-radius: 20px;
+            border: none;
+            background: #E6E6E6;
+            padding: 2rem;
+            font-size: 1.2rem;
+            font-family: $font-nunito-sans;
+            color: #807D7D;
+            font-size: 1.2rem;
+            font-style: normal;
+            font-weight: 600;
+            line-height: normal;
+            margin-bottom: 1.6rem;
+        }
+
+        input[type="date"] {
+            width: 32.7rem;
+            height: 2rem;
+            border-radius: 20px;
+            padding: 2rem;
+            font-size: 1.2rem;
+            font-family: $font-nunito-sans;
+            color: #807D7D;
+            font-size: 1.2rem;
+            font-style: normal;
+            font-weight: 600;
+            line-height: normal;
+            text-transform: uppercase;
+            border: none;
+        }
+
+        ::-webkit-calendar-picker-indicator {
+            background: transparent;
+        }
+
+        input:focus {
+            background: #FFFFFF;
+            font-size: 1.4rem;
+            font-family: $font-nunito-sans;
+            color: #333333;
+            font-style: normal;
+            font-weight: 600;
+            line-height: normal;
+            border-radius: 40px;
+            border: 2px solid #807D7D;
+            outline: 0;
+        }
+
+        label {
+
+            font-size: 1.2rem;
+            font-family: $font-nunito-sans;
+            color: #333333;
+            font-size: 1.2rem;
+            font-style: normal;
+            font-weight: 300;
+            line-height: normal;
+            margin-bottom: 0.8rem;
+        }
+
+        button {
+            margin-top: 6.6rem;
+        }
+
+        .content-input {
+
+            display: flex;
+            margin: 1rem;
+        }
+
+        .eyes {
+            position: relative;
+
+            img {
+                width: 2.5rem;
+                height: 1.9rem;
+                position: absolute;
+                right: 5rem;
+                bottom: 0rem;
+            }
+        }
+
+        .img-eye {
+            width: 100%;
+            position: relative;
+
+            img {
+                position: absolute;
+                top: 1rem;
+                right: 12rem;
+            }
+        }
+
+        .message-error {
+            color: #FB263C;
+            font-size: 1.2rem;
+            font-family: $font-nunito-sans;
+            font-weight: 300;
+            line-height: normal;
+            margin-top: -1rem;
+            display: flex;
+            justify-content: end;
+        }
+
+        .error-label {
+            color: #FB263C;
+            font-weight: 600;
+        }
+
+        .input-wrapper input {
+
+            border: none;
+            color: #807D7D;
+        }
+
+        .input-wrapper input:focus {
+            border: 2px solid #807D7D;
+        }
+
+        .input-wrapper.error-border input {
+            border: 2px solid red;
+        }
+
+        .input-wrapper {
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+
+            img {
+                display: flex;
+                flex-direction: row;
+
+            }
+        }
+    }
+}
