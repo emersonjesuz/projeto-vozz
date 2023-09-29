@@ -1,4 +1,6 @@
 @use "./button";
+@use "./input";
+@use "./h1";
 @import "./fonts";
 
 :root {
@@ -22,12 +24,4 @@
   padding: 0;
   box-sizing: border-box;
   font-size: 62.5%;
-}
-
-h1 {
-  font-family: $font-sora;
-  font-size: 2.4rem;
-  font-style: normal;
-  font-weight: 700;
-  line-height: normal;
 }

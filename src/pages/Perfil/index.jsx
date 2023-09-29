@@ -1,33 +1,31 @@
 import CardPerfil from "../../components/CardPerfil";
 import styles from "./styles.module.scss";
-import iconFace1 from '../../assets/icons/face1.svg'
-import iconFace2 from '../../assets/icons/face2.svg'
-import iconFace3 from '../../assets/icons/face3.svg'
+import iconFace1 from "../../assets/icons/face1.svg";
+import iconFace2 from "../../assets/icons/face2.svg";
+import iconFace3 from "../../assets/icons/face3.svg";
 import { useEffect, useState } from "react";
-import useUser from "../../hooks/useUser";
-
+import useDataNavegate from "../../hooks/useDataNavegate/useDataNavegate";
 
 export default function Perfil() {
-
-  const [buttonSelectPerson, setButtonSelectPerson] = useState(false)
-  const [buttonSelectPolitical, setButtonSelectPolitical] = useState(false)
-  const [buttonSelectInstitution, setButtonSelectInstitution] = useState(false)
-  /* const { setTitleNavigate, activedRote } = useUser(); */
+  const [buttonSelectPerson, setButtonSelectPerson] = useState(false);
+  const [buttonSelectPolitical, setButtonSelectPolitical] = useState(false);
+  const [buttonSelectInstitution, setButtonSelectInstitution] = useState(false);
+  /* const { setTitleNavigate, activedRote } = useDataNavegate(); */
 
   const activateButton = (index) => {
-    if (index === 'person') {
-      setButtonSelectPolitical(false)
-      setButtonSelectInstitution(false)
+    if (index === "person") {
+      setButtonSelectPolitical(false);
+      setButtonSelectInstitution(false);
     }
-    if (index === 'political') {
-      setButtonSelectPerson(false)
-      setButtonSelectInstitution(false)
+    if (index === "political") {
+      setButtonSelectPerson(false);
+      setButtonSelectInstitution(false);
     }
-    if (index === 'institution') {
-      setButtonSelectPerson(false)
-      setButtonSelectPolitical(false)
+    if (index === "institution") {
+      setButtonSelectPerson(false);
+      setButtonSelectPolitical(false);
     }
-  }
+  };
 
   /* activedRote('/access/sign-up') */
 
@@ -44,20 +42,20 @@ export default function Perfil() {
         <CardPerfil
           imagePerfil={iconFace1}
           titleText="Sou pessoa cidadã"
-          secondText='Se você quer acompanhar as pautas políticas e dar sua opinião, esse é o seu espaço.'
+          secondText="Se você quer acompanhar as pautas políticas e dar sua opinião, esse é o seu espaço."
           buttonselect={buttonSelectPerson}
           setButtonSelect={setButtonSelectPerson}
           activateButton={activateButton}
-          chosenButton={'person'}
+          chosenButton={"person"}
         />
         <CardPerfil
           imagePerfil={iconFace2}
           titleText="Sou da gestão política"
-          secondText='Aproxime-se dos cidadãos para tornar as soluções mais relevantes para o coletivo.'
+          secondText="Aproxime-se dos cidadãos para tornar as soluções mais relevantes para o coletivo."
           buttonselect={buttonSelectPolitical}
           setButtonSelect={setButtonSelectPolitical}
           activateButton={activateButton}
-          chosenButton={'political'}
+          chosenButton={"political"}
         />
         <CardPerfil
           imagePerfil={iconFace3}
@@ -66,7 +64,7 @@ export default function Perfil() {
           buttonselect={buttonSelectInstitution}
           setButtonSelect={setButtonSelectInstitution}
           activateButton={activateButton}
-          chosenButton={'institution'}
+          chosenButton={"institution"}
         />
       </div>
       <button>Avançar</button>

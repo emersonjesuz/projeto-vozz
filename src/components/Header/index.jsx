@@ -1,12 +1,16 @@
 import styles from "./styles.module.scss";
 import logoVozzImage from "../../assets/header/logo-vozz.svg";
 import arrowLeftIcon from "../../assets/header/arrow-left-gray.svg";
+import useDataNavegate from "../../hooks/useDataNavegate/useDataNavegate";
 
 export default function Header() {
-  /* const { activedRote } = useUser(); */
+  const { activedRote, titleNavigate } = useDataNavegate();
 
   return (
-    <header className={styles.conteiner} /* onClick={activedRote} */>
+    <header
+      className={styles.conteiner}
+      onClick={() => activedRote(titleNavigate)}
+    >
       <img
         className={styles["arrow-left"]}
         src={arrowLeftIcon}
