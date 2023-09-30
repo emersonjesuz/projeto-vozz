@@ -11,6 +11,7 @@ function Register() {
     email: "",
     birthday: "",
     password: "",
+    code: "",
   });
 
   const [name, setName] = useState("");
@@ -28,21 +29,23 @@ function Register() {
     const newErrors = {};
 
     if (!name) {
-      newErrors.name = "O nome é obrigatório";
+      newErrors.name = "O nome é obrigatório.";
     }
 
     if (!email || email.search(checkEmail) === -1) {
-      newErrors.email = !email ? "O email é obrigatório" : "Email inválido";
+      newErrors.email = !email
+        ? "O email é obrigatório."
+        : "Confira se você digitou corretamente.";
     }
 
     if (!birthday) {
-      newErrors.birthday = "A data de nascimento é obrigatória";
+      newErrors.birthday = "A data de nascimento é obrigatória.";
     }
 
     if (!password || password.length < 8) {
       newErrors.password = !password
-        ? "Defina uma senha"
-        : "A senha deve ter pelo menos 8 caracteres";
+        ? "Digite uma senha."
+        : "Deve conter pelo menos 8 caracteres.";
     }
     setShowImage(true);
     setErrors(newErrors);
@@ -110,9 +113,8 @@ function Register() {
               iconSrc={errors.password ? errorIcon : checkIcon}
               alt={"ícone de erro"}
             />
-
-            <div>
-              <button type="submit">Inscrever-se</button>
+            <div className={styles["button"]}>
+              <button type="submit">Cadastrar</button>
             </div>
           </div>
         </form>

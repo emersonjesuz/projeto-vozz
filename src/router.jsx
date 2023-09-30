@@ -7,7 +7,8 @@ import SignIn from "./pages/SignIn";
 import HeaderLayout from "./layouts";
 import SignUp from "./pages/SignUp";
 import Register from "./pages/Register";
-import CheckPassword from "./pages/CheckPassword";
+import RecoverPassword from "./pages/RecoverPassword";
+import VerificationCode from "./pages/VerificationCode";
 import Perfil from "./pages/Perfil";
 import OpeningPage from "./pages/OpeningPage";
 import TransiationPage from "./pages/TransitionPage";
@@ -24,7 +25,9 @@ export const Router = createBrowserRouter(
         <Route path="sign-in" element={<SignIn />} />
         <Route path="sign-up" element={<SignUp />} />
         <Route path="register" element={<Register />} />
-        <Route path="check-password" element={<CheckPassword />} />
+        <Route path="recover-password" element={<RecoverPassword />} />
+        <Route path="code" element={<VerificationCode />} />
+
         <Route path="perfil" element={<Perfil />} />
       </Route>
     </>
