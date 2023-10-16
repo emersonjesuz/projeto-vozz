@@ -13,9 +13,11 @@ import facebookIcon from "../../../assets/icons/facebook-icon.svg";
 import googleIcon from "../../../assets/icons/google-icon.svg";
 import { auth } from "../../../services/firebase";
 import styles from "./styles.module.scss";
+import { useRouter } from "next/navigation";
 
 export default function SignIn() {
   const [handleChekbox, setHandleCheckbox] = useState(false);
+  const navegate = useRouter();
 
   async function googleSignIn(event: FormEvent) {
     event.preventDefault();
@@ -41,12 +43,18 @@ export default function SignIn() {
     }
   }
 
+  async function handleSubmit(event: FormEvent) {
+    event.preventDefault();
+    navegate.push("/access/Perfil");
+    console.log("ola");
+  }
+
   return (
     <div className={styles.container}>
       <div className={styles["content-title"]}>
         <h1>Entre com a sua conta</h1>
       </div>
-      <form className={styles["content-form"]}>
+      <form onChange={handleSubmit} className={styles["content-form"]}>
         <div className={styles["box-input"]}>
           <label htmlFor="email">E-mail</label>
           <input
@@ -66,7 +74,9 @@ export default function SignIn() {
           />
           <Link href={"/"}>Esqueci minha senha</Link>
         </div>
-        <button className="button-blue">Entrar</button>
+        <button onClick={handleSubmit} className="button-blue">
+          Entrar
+        </button>
         <div className={styles.checkbox}>
           <Image
             onClick={() => setHandleCheckbox(!handleChekbox)}
@@ -76,7 +86,7 @@ export default function SignIn() {
           <p className={styles["info-term"]}>Continuar conectado</p>
         </div>
       </form>
-      ../
+
       <div className={styles["line-or"]}>
         <div></div>
         <span>ou</span>

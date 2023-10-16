@@ -61,7 +61,7 @@ export default function Perfil() {
           chosenButton={"institution"}
         />
       </div>
-      <button>Avançar</button>
+      <button className={styles["content-button"]}>Avançar</button>
     </div>
   );
 }
