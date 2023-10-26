@@ -12,6 +12,7 @@
     flex-direction: column;
 
     padding: 2.4rem;
+
     h2 {
       padding-top: 1.6rem;
 
@@ -21,23 +22,27 @@
       font-weight: 400;
       line-height: normal;
     }
+  }
 
-    button {
-      width: 32.7rem;
-      height: 4.6rem;
+  .container-perfil-main {
+    padding-top: 3.8rem;
+  }
 
-      margin-top: 4rem;
+  .btn {
+    width: 32.7rem;
+    height: 4.6rem;
 
-      border-radius: 5rem;
-      border: none;
-      background: #1992b8;
-      box-shadow: 1px 2px 4px 0px rgba(0, 0, 0, 0.25);
+    margin-top: 4rem;
 
-      font-family: $font-nunito-sans;
-      font-size: 1.6rem;
-      font-style: normal;
-      font-weight: 700;
-      line-height: normal;
-    }
+    border-radius: 5rem;
+    border: none;
+    background: #1992b8;
+    box-shadow: 1px 2px 4px 0px rgba(0, 0, 0, 0.25);
+
+    font-family: $font-nunito-sans;
+    font-size: 1.6rem;
+    font-style: normal;
+    font-weight: 700;
+    line-height: normal;
   }
 }
