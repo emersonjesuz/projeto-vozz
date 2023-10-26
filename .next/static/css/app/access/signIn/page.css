@@ -1,0 +1,197 @@
+/*!************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************!*\
+  !*** css ./node_modules/next/dist/build/webpack/loaders/css-loader/src/index.js??ruleSet[1].rules[13].oneOf[9].use[2]!./node_modules/next/dist/build/webpack/loaders/postcss-loader/src/index.js??ruleSet[1].rules[13].oneOf[9].use[3]!./node_modules/next/dist/build/webpack/loaders/resolve-url-loader/index.js??ruleSet[1].rules[13].oneOf[9].use[4]!./node_modules/next/dist/compiled/sass-loader/cjs.js??ruleSet[1].rules[13].oneOf[9].use[5]!./src/app/access/signIn/styles.module.scss ***!
+  \************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************/
+@media (max-width: 37.5rem) {
+  .styles_container__QUX7j {
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    height: 100vh;
+  }
+  .styles_content-title__Qk92q {
+    width: 100%;
+    padding: 4rem 2.4rem;
+  }
+  .styles_content-title__Qk92q h1 {
+    font-family: "Sora", sans-serif;
+    font-size: 2.4rem;
+    font-style: normal;
+    font-weight: 700;
+    line-height: normal;
+  }
+  .styles_content-form__ihfWf {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 1.6rem;
+  }
+  .styles_content-form__ihfWf .styles_box-input__WwBLU {
+    display: flex;
+    flex-direction: column;
+    gap: 0.8rem;
+    width: 100%;
+    padding: 0 2.4rem;
+  }
+  .styles_content-form__ihfWf .styles_box-input__WwBLU label {
+    color: #333;
+    font-family: "Nunito Sans", sans-serif;
+    font-size: 1.2rem;
+    font-style: normal;
+    font-weight: 300;
+    line-height: normal;
+  }
+  .styles_content-form__ihfWf .styles_box-input__WwBLU input {
+    display: flex;
+    height: 4rem;
+    padding: 1.2rem 2.4rem;
+    align-items: center;
+    border: none;
+    border-radius: 2rem;
+    background: #e6e6e6;
+    color: #807d7d;
+    font-family: "Nunito Sans", sans-serif;
+    font-size: 1.4rem;
+    font-style: normal;
+    font-weight: 600;
+    line-height: normal;
+  }
+  .styles_content-form__ihfWf a {
+    margin-top: 1.6rem;
+    color: #0d7291;
+    font-family: "Nunito Sans", sans-serif;
+    font-size: 1.4rem;
+    font-style: normal;
+    font-weight: 600;
+    line-height: normal;
+    -webkit-text-decoration-line: underline;
+            text-decoration-line: underline;
+  }
+  .styles_content-form__ihfWf button {
+    width: calc(100% - 4.8rem);
+    height: 4rem;
+    margin: 1.6rem 2.4rem;
+    font-size: 1.6rem;
+    font-style: normal;
+    font-weight: 700;
+  }
+  .styles_checkbox__5MSWE {
+    display: flex;
+    align-items: center;
+    gap: 0.8rem;
+    width: 100%;
+    padding: 0 2.4rem;
+  }
+  .styles_checkbox__5MSWE p {
+    color: #000;
+    font-family: "Nunito Sans", sans-serif;
+    font-size: 1.2rem;
+    font-style: normal;
+    font-weight: 600;
+    line-height: normal;
+  }
+  .styles_line-or__bzbmA {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 1.1rem;
+    height: 2.3rem;
+    width: 100%;
+    margin-top: 2.4rem;
+    margin-bottom: 1.6rem;
+  }
+  .styles_line-or__bzbmA div {
+    height: 0.1rem;
+    width: 14.2rem;
+    background-color: #e6e6e6;
+  }
+  .styles_line-or__bzbmA span {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 2rem;
+    height: 2.3rem;
+    padding-bottom: 0.3rem;
+    color: #807d7d;
+    font-family: "Nunito Sans", sans-serif;
+    font-size: 1.2rem;
+    font-style: normal;
+    font-weight: 600;
+    line-height: normal;
+  }
+  .styles_content-buttons__yoTif {
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+    gap: 1.5rem;
+    width: 100%;
+    padding: 0 2.4rem;
+    margin-bottom: 2.4rem;
+  }
+  .styles_content-buttons__yoTif button {
+    width: 32.7rem;
+    height: 4.6rem;
+    margin: 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 1rem;
+    font-family: "Nunito Sans", sans-serif;
+    font-size: 1.6rem;
+    font-style: normal;
+    font-weight: 700;
+    line-height: normal;
+    border-radius: 5rem;
+  }
+  .styles_content-info__qlraG {
+    display: flex;
+    flex-direction: column;
+    gap: 4.8rem;
+    width: 100%;
+    padding: 0 2.4rem;
+    padding-bottom: 3.2rem;
+  }
+  .styles_content-info__qlraG div {
+    display: flex;
+    align-items: center;
+    gap: 0.8rem;
+  }
+  .styles_content-info__qlraG div img {
+    width: 2.4rem;
+    height: 2.4rem;
+  }
+  .styles_content-info__qlraG .styles_info-term__SHAq3 {
+    color: #000;
+    font-family: "Nunito Sans", sans-serif;
+    font-size: 1.2rem;
+    font-style: normal;
+    font-weight: 300;
+    line-height: normal;
+  }
+  .styles_content-info__qlraG .styles_info-term__SHAq3 span {
+    color: #1992b8;
+    font-family: "Nunito Sans", sans-serif;
+    font-size: 1.2rem;
+    font-style: normal;
+    font-weight: 300;
+    line-height: normal;
+  }
+  .styles_content-info__qlraG .styles_info-sign-in__dBIR4 {
+    color: #000;
+    font-family: "Nunito Sans", sans-serif;
+    font-size: 1.4rem;
+    font-style: normal;
+    font-weight: 400;
+    line-height: normal;
+  }
+  .styles_content-info__qlraG .styles_info-sign-in__dBIR4 span {
+    color: #1992b8;
+    font-family: "Nunito Sans", sans-serif;
+    font-size: 14px;
+    font-style: normal;
+    font-weight: 600;
+    line-height: normal;
+    -webkit-text-decoration-line: underline;
+            text-decoration-line: underline;
+  }
+}

@@ -1,0 +1,106 @@
+/*!*********************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************!*\
+  !*** css ./node_modules/next/dist/build/webpack/loaders/css-loader/src/index.js??ruleSet[1].rules[13].oneOf[9].use[2]!./node_modules/next/dist/build/webpack/loaders/postcss-loader/src/index.js??ruleSet[1].rules[13].oneOf[9].use[3]!./node_modules/next/dist/build/webpack/loaders/resolve-url-loader/index.js??ruleSet[1].rules[13].oneOf[9].use[4]!./node_modules/next/dist/compiled/sass-loader/cjs.js??ruleSet[1].rules[13].oneOf[9].use[5]!./src/app/Onboarding/styles.module.scss ***!
+  \*********************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************/
+@media (max-width: 37.5rem) {
+  .styles_container_page__zjWbf {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    align-items: center;
+    position: relative;
+    width: 100vw;
+    height: 100vh;
+    background-color: #2ab3de;
+  }
+  .styles_container_page__zjWbf button {
+    border: none;
+  }
+  .styles_up__mKbOd {
+    padding-top: 24px;
+    position: relative;
+  }
+  .styles_return___5D2WU {
+    position: absolute;
+    top: 70px;
+    left: 24px;
+  }
+  .styles_image_logo__ufAuM {
+    margin-top: 20px;
+  }
+  .styles_down__jYe8f {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+    width: 100%;
+    height: 55.56%;
+    padding: 0px 24px 0px 24px;
+    background-color: white;
+    border-radius: 20px 20px 0 0;
+  }
+  .styles_content-title__rjWBC {
+    color: #333;
+    font-family: "Sora", sans-serif;
+    font-size: 24px;
+    font-style: normal;
+    font-weight: 700;
+    line-height: normal;
+    margin-top: 49px;
+  }
+  .styles_content-span__3a3cO {
+    color: #000;
+    font-family: "Nunito Sans", sans-serif;
+    font-size: 16px;
+    font-style: normal;
+    font-weight: 400;
+    line-height: normal;
+  }
+  .styles_footer__cU_c4 {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    height: 50px;
+    width: 100%;
+  }
+  .styles_btn_return__EP6VA,
+  .styles_btn_forward__QZmmk {
+    height: 50px;
+    width: 50px;
+    background-color: rgba(0, 0, 0, 0);
+    margin-top: 0;
+  }
+  .styles_elipse__zjCEJ {
+    width: 12px;
+    height: 12px;
+    margin-left: 5px;
+    margin-right: 5px;
+  }
+  .styles_buttons__oMJpk {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 16px;
+    margin-top: 77px;
+  }
+  .styles_buttons__oMJpk button {
+    margin: 0;
+    width: 100%;
+    height: 4.6rem;
+    border: 1px solid;
+    font-family: "Nunito Sans", sans-serif;
+    font-size: 16px;
+    font-style: normal;
+    font-weight: 700;
+    line-height: normal;
+  }
+  .styles_buttons__oMJpk a {
+    color: #0d7291;
+    text-align: center;
+    font-family: "Nunito Sans", sans-serif;
+    font-size: 14px;
+    font-style: normal;
+    font-weight: 600;
+    line-height: normal;
+    -webkit-text-decoration-line: underline;
+            text-decoration-line: underline;
+  }
+}

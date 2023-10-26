@@ -1,0 +1,104 @@
+/*!****************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************!*\
+  !*** css ./node_modules/next/dist/build/webpack/loaders/css-loader/src/index.js??ruleSet[1].rules[13].oneOf[9].use[2]!./node_modules/next/dist/build/webpack/loaders/postcss-loader/src/index.js??ruleSet[1].rules[13].oneOf[9].use[3]!./node_modules/next/dist/build/webpack/loaders/resolve-url-loader/index.js??ruleSet[1].rules[13].oneOf[9].use[4]!./node_modules/next/dist/compiled/sass-loader/cjs.js??ruleSet[1].rules[13].oneOf[9].use[5]!./src/components/CardPerfil/styles.module.scss ***!
+  \****************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************/
+@media (max-width: 37.5rem) {
+  .styles_container-card-perfil__uawN0 {
+    display: flex;
+    align-items: center;
+    padding-bottom: 1.6rem;
+    margin: 0 2.4rem;
+    width: 32.7rem;
+  }
+  .styles_container-text-perfil__p1kZa {
+    padding-left: 1.6rem;
+    width: 23.9rem;
+  }
+  .styles_container-text-perfil__p1kZa h1 {
+    font-size: 1.8rem;
+    margin-bottom: 0.8rem;
+  }
+  .styles_container-text-perfil__p1kZa h2 {
+    font-family: "Nunito Sans", sans-serif;
+    font-size: 1.4rem;
+    font-style: normal;
+    font-weight: 400;
+    /*       line-height: normal; */
+  }
+  .styles_container-text-button__7pyIc {
+    display: flex;
+    align-items: center;
+  }
+  .styles_container-text-button__7pyIc h2 {
+    width: 16.5rem;
+  }
+  .styles_btn-perfil__fHuWv {
+    margin-left: 1rem;
+    width: 4.8rem;
+    height: 2.8rem;
+    border-radius: 20px;
+    border: none;
+    background: #E6E6E6;
+    box-shadow: 0px 0px 4px 0px rgba(0, 0, 0, 0.3) inset;
+  }
+  .styles_btn-perfil-atived__JvVNd {
+    background: #7DD8FF !important;
+  }
+  .styles_btn-perfil-eclipse__JNaRk {
+    position: relative;
+    top: 0.1rem;
+    left: 0.05rem;
+    width: 2.4rem;
+    height: 2.52rem;
+    background-color: white;
+    border-radius: 1.3rem;
+    fill: white;
+    filter: drop-shadow(0.5px 0.5px 1px rgba(0, 0, 0, 0.3));
+    transition: 0.5s ease-in-out;
+  }
+  .styles_left__ynrYJ {
+    transform: translateX(90%);
+  }
+  .styles_right__AvNRe {
+    transform: translateX(10%);
+  }
+}
+/*!************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************!*\
+  !*** css ./node_modules/next/dist/build/webpack/loaders/css-loader/src/index.js??ruleSet[1].rules[13].oneOf[9].use[2]!./node_modules/next/dist/build/webpack/loaders/postcss-loader/src/index.js??ruleSet[1].rules[13].oneOf[9].use[3]!./node_modules/next/dist/build/webpack/loaders/resolve-url-loader/index.js??ruleSet[1].rules[13].oneOf[9].use[4]!./node_modules/next/dist/compiled/sass-loader/cjs.js??ruleSet[1].rules[13].oneOf[9].use[5]!./src/app/access/Perfil/styles.module.scss ***!
+  \************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************/
+@media (max-width: 37.5rem) {
+  .styles_container-perfil__DHkFB {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
+  .styles_container-perfil-title__uEGNP {
+    display: flex;
+    flex-direction: column;
+    padding: 2.4rem;
+  }
+  .styles_container-perfil-title__uEGNP h2 {
+    padding-top: 1.6rem;
+    font-family: "Nunito Sans", sans-serif;
+    font-size: 1.8rem;
+    font-style: normal;
+    font-weight: 400;
+    line-height: normal;
+  }
+  .styles_container-perfil-main__aBrow {
+    padding-top: 3.8rem;
+  }
+  .styles_btn__aOWY5 {
+    width: 32.7rem;
+    height: 4.6rem;
+    margin-top: 4rem;
+    border-radius: 5rem;
+    border: none;
+    background: #1992b8;
+    box-shadow: 1px 2px 4px 0px rgba(0, 0, 0, 0.25);
+    font-family: "Nunito Sans", sans-serif;
+    font-size: 1.6rem;
+    font-style: normal;
+    font-weight: 700;
+    line-height: normal;
+  }
+}

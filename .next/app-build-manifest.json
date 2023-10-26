@@ -1,0 +1,64 @@
+{
+  "pages": {
+    "/page": [
+      "static/chunks/webpack.js",
+      "static/chunks/main-app.js",
+      "static/css/app/page.css",
+      "static/chunks/app/page.js"
+    ],
+    "/layout": [
+      "static/chunks/webpack.js",
+      "static/chunks/main-app.js",
+      "static/css/app/layout.css",
+      "static/chunks/app/layout.js"
+    ],
+    "/transition/page": [
+      "static/chunks/webpack.js",
+      "static/chunks/main-app.js",
+      "static/css/app/transition/page.css",
+      "static/chunks/app/transition/page.js"
+    ],
+    "/Onboarding/page": [
+      "static/chunks/webpack.js",
+      "static/chunks/main-app.js",
+      "static/css/app/Onboarding/page.css",
+      "static/chunks/app/Onboarding/page.js"
+    ],
+    "/access/layout": [
+      "static/chunks/webpack.js",
+      "static/chunks/main-app.js",
+      "static/css/app/access/layout.css",
+      "static/chunks/app/access/layout.js"
+    ],
+    "/access/SignUp/page": [
+      "static/chunks/webpack.js",
+      "static/chunks/main-app.js",
+      "static/css/app/access/SignUp/page.css",
+      "static/chunks/app/access/SignUp/page.js"
+    ],
+    "/access/signIn/page": [
+      "static/chunks/webpack.js",
+      "static/chunks/main-app.js",
+      "static/css/app/access/signIn/page.css",
+      "static/chunks/app/access/signIn/page.js"
+    ],
+    "/Home/page": [
+      "static/chunks/webpack.js",
+      "static/chunks/main-app.js",
+      "static/css/app/Home/page.css",
+      "static/chunks/app/Home/page.js"
+    ],
+    "/access/Perfil/page": [
+      "static/chunks/webpack.js",
+      "static/chunks/main-app.js",
+      "static/css/app/access/Perfil/page.css",
+      "static/chunks/app/access/Perfil/page.js"
+    ],
+    "/access/Interests/page": [
+      "static/chunks/webpack.js",
+      "static/chunks/main-app.js",
+      "static/css/app/access/Interests/page.css",
+      "static/chunks/app/access/Interests/page.js"
+    ]
+  }
+}

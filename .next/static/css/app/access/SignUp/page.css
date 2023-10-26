@@ -1,0 +1,122 @@
+/*!************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************!*\
+  !*** css ./node_modules/next/dist/build/webpack/loaders/css-loader/src/index.js??ruleSet[1].rules[13].oneOf[9].use[2]!./node_modules/next/dist/build/webpack/loaders/postcss-loader/src/index.js??ruleSet[1].rules[13].oneOf[9].use[3]!./node_modules/next/dist/build/webpack/loaders/resolve-url-loader/index.js??ruleSet[1].rules[13].oneOf[9].use[4]!./node_modules/next/dist/compiled/sass-loader/cjs.js??ruleSet[1].rules[13].oneOf[9].use[5]!./src/app/access/SignUp/styles.module.scss ***!
+  \************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************/
+@media (max-width: 37.5rem) {
+  .styles_container__XuLqi {
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    height: 100vh;
+  }
+  .styles_content-title__TGq5y {
+    width: 100%;
+    height: 27.2rem;
+    padding: 4rem 2.4rem;
+  }
+  .styles_content-title__TGq5y h1 {
+    font-family: "Sora", sans-serif;
+    font-size: 2.4rem;
+    font-style: normal;
+    font-weight: 700;
+    line-height: normal;
+  }
+  .styles_content-buttons__IryPV {
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+    gap: 1.5rem;
+    width: 100%;
+    padding: 0 2.4rem;
+    margin-bottom: 2.5rem;
+  }
+  .styles_content-buttons__IryPV button {
+    width: 32.7rem;
+    height: 4.6rem;
+    margin: 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 1rem;
+    font-family: "Nunito Sans", sans-serif;
+    font-size: 1.6rem;
+    font-style: normal;
+    font-weight: 700;
+    line-height: normal;
+    border-radius: 5rem;
+  }
+  .styles_content-buttons__IryPV .styles_line-or__yLqxD {
+    display: flex;
+    align-items: center;
+    height: 2.3rem;
+  }
+  .styles_content-buttons__IryPV .styles_line-or__yLqxD div {
+    height: 0.1rem;
+    width: 14.2rem;
+    background-color: #e6e6e6;
+  }
+  .styles_content-buttons__IryPV .styles_line-or__yLqxD span {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 2rem;
+    height: 2.3rem;
+    color: #807d7d;
+    font-family: "Nunito Sans", sans-serif;
+    font-size: 1.2rem;
+    font-style: normal;
+    font-weight: 600;
+    line-height: normal;
+  }
+  .styles_content-info__Yboxq {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 4.8rem;
+    width: 100%;
+    padding: 0 2.4rem;
+    padding-bottom: 3.2rem;
+  }
+  .styles_content-info__Yboxq div {
+    display: flex;
+    align-items: center;
+    gap: 0.8rem;
+  }
+  .styles_content-info__Yboxq div img {
+    width: 2.4rem;
+    height: 2.4rem;
+  }
+  .styles_content-info__Yboxq .styles_info-term__NmiJb {
+    color: #000;
+    font-family: "Nunito Sans", sans-serif;
+    font-size: 1.2rem;
+    font-style: normal;
+    font-weight: 300;
+    line-height: normal;
+  }
+  .styles_content-info__Yboxq .styles_info-term__NmiJb span {
+    color: #1992b8;
+    font-family: "Nunito Sans", sans-serif;
+    font-size: 1.2rem;
+    font-style: normal;
+    font-weight: 300;
+    line-height: normal;
+  }
+  .styles_content-info__Yboxq .styles_info-sign-in__wAzbH {
+    color: #000;
+    font-family: "Nunito Sans", sans-serif;
+    font-size: 1.4rem;
+    font-style: normal;
+    font-weight: 400;
+    line-height: normal;
+  }
+  .styles_content-info__Yboxq .styles_info-sign-in__wAzbH span {
+    color: #1992b8;
+    font-family: "Nunito Sans", sans-serif;
+    font-size: 14px;
+    font-style: normal;
+    font-weight: 600;
+    line-height: normal;
+    -webkit-text-decoration-line: underline;
+            text-decoration-line: underline;
+  }
+}
