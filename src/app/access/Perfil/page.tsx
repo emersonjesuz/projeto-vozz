@@ -1,15 +1,17 @@
 "use client";
-import { useState } from "react";
+import { useState, FormEvent } from "react";
 import iconFace1 from "../../../assets/icons/face1.svg";
 import iconFace2 from "../../../assets/icons/face2.svg";
 import iconFace3 from "../../../assets/icons/face3.svg";
 import CardPerfil from "../../../components/CardPerfil";
 import styles from "./styles.module.scss";
+import { useRouter } from "next/navigation";
 
 export default function Perfil() {
   const [buttonSelectPerson, setButtonSelectPerson] = useState(false);
   const [buttonSelectPolitical, setButtonSelectPolitical] = useState(false);
   const [buttonSelectInstitution, setButtonSelectInstitution] = useState(false);
+  const navegate = useRouter();
 
   const activateButton = (index: string) => {
     if (index === "person") {
@@ -25,6 +27,11 @@ export default function Perfil() {
       setButtonSelectPolitical(false);
     }
   };
+
+  function handleSubmitToPerfil(event: FormEvent) {
+    event.preventDefault();
+    navegate.push("/access/Interests");
+  }
 
   return (
     <div className={styles["container-perfil"]}>
@@ -61,7 +68,7 @@ export default function Perfil() {
           chosenButton={"institution"}
         />
       </div>
-      <button>Avançar</button>
+      <button className={styles["btn"]} onClick={handleSubmitToPerfil}>Avançar</button>
     </div>
   );
 }
