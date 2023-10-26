@@ -1,4 +1,4 @@
-@import "./colors";
+@import "colors";
 
 button {
   display: flex;
@@ -6,6 +6,7 @@ button {
   align-items: center;
   gap: 1rem;
   cursor: pointer;
+  border-radius: 50px;
 }
 
 .button-blue {
