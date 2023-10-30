@@ -1,29 +1,8 @@
-@import "../../styles/fonts";
-@import "../../styles/colors";
+@import "../../../styles/fonts";
+@import "../../../styles/colors";
 
 @media (max-width: 37.5rem) {
     .containerHome {
-
-        .headerHome {
-            display: flex;
-            justify-content: space-around;
-            align-items: center;
-
-            height: 11rem;
-
-            h2 {
-                font-family: $font-nunito-sans;
-                font-size: 1.8rem;
-                font-style: normal;
-                font-weight: 400;
-                line-height: 1.8rem;
-            }
-
-            .photo {
-                width: 4rem;
-            }
-        }
-
         nav {
             display: flex;
             justify-content: center;

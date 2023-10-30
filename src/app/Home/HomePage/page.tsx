@@ -1,25 +1,26 @@
 "use client";
+import PerfilUser from '../../../components/PerfilUser/index';
 import Publication from '@/components/Publication';
 import Image from 'next/image';
 import { useState } from 'react';
-import Arrow from '../../assets/Home/Arrow.svg';
-import Can from '../../assets/Home/Can.svg';
-import Student from '../../assets/Home/Icone_Aprender Off.svg';
-import Ativ from '../../assets/Home/Icone_Atividades Off.svg';
-import Conver from '../../assets/Home/Icone_Conversas Off.svg';
-import IconHome from '../../assets/Home/Icone_Home On.svg';
-import Particip from '../../assets/Home/Icone_Participar Off.svg';
-import Lupa from '../../assets/Home/Lupa.svg';
-import Photo from '../../assets/Home/PhotoPerfil.svg';
-import Pincel from '../../assets/Home/Pincel.svg';
-import Clip from '../../assets/Home/clip.svg';
+import Arrow from '../../../assets/Home/Arrow.svg';
+import Can from '../../../assets/Home/Can.svg';
+import Student from '../../../assets/Home/Icone_Aprender Off.svg';
+import Ativ from '../../../assets/Home/Icone_Atividades Off.svg';
+import Conver from '../../../assets/Home/Icone_Conversas Off.svg';
+import IconHome from '../../../assets/Home/Icone_Home On.svg';
+import Particip from '../../../assets/Home/Icone_Participar Off.svg';
+import Pincel from '../../../assets/Home/Pincel.svg';
+import Clip from '../../../assets/Home/clip.svg';
+/* import userHomeProvider from '../../../hooks/userHomeProvider'; */
 import styles from "./styles.module.scss";
-import PerfilUser from '@/components/PerfilUser';
+/* import useHome from '@/hooks/Home/useHome'; */
 
 
-export default function Home() {
+export default function HomePage() {
+  /* const { isAtivedPerfilUser } = useHome(); */
   const [isInputFocused, setIsInputFocused] = useState(false);
-  const [isAtivedPerfilUser, setisAtivedPerfilUser] = useState(false)
+
 
   const handleInputFocus = () => {
     setIsInputFocused(true);
@@ -29,18 +30,8 @@ export default function Home() {
     setIsInputFocused(false);
   };
 
-  const handleComponentPerfil = () => {
-    setisAtivedPerfilUser(true);
-  }
-
-
   return (
     <div className={styles["containerHome"]}>
-      <div className={styles["headerHome"]}>
-        <Image src={Photo} alt={'Foto de Perfil'} className={styles["photo"]} onClick={handleComponentPerfil} />
-        <h2>Home</h2>
-        <Image src={Lupa} alt='Pesquisar' />
-      </div>
       <nav>
         <h4 className={styles["select"]}>em alta</h4>
         <h4>educação</h4>
@@ -61,7 +52,7 @@ export default function Home() {
         </div>
         {/* Fazer disso abaixo um componente */}
         <Publication />
-        {isAtivedPerfilUser && <PerfilUser ModalOn={setisAtivedPerfilUser} />}
+        {/*  {isAtivedPerfilUser && <PerfilUser />} */}
       </div>
       <div className={styles["footerHome"]}>
         <div className={styles["select"]} >
