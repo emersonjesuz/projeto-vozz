@@ -68,7 +68,9 @@ export default function Perfil() {
           chosenButton={"institution"}
         />
       </div>
-      <button className={styles["btn"]} onClick={handleSubmitToPerfil}>Avançar</button>
+      <button className={styles["btn"]} onClick={handleSubmitToPerfil}>
+        Avançar
+      </button>
     </div>
   );
 }

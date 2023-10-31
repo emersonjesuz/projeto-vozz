@@ -7,22 +7,17 @@ import Hand from '../../assets/Home/Hand.svg';
 import Band from '../../assets/Home/Band.svg';
 import ArrowButtom from '../../assets/Home/ArrowBottom.svg';
 import Set from '../../assets/header/arrow-left-gray.svg';
+import { useGlobalContext } from "@/contexts/ContextHome";
 
-type Props = {
-    ModalOn: React.Dispatch<React.SetStateAction<boolean>>;
-};
 
-export default function PerfilUser({ ModalOn }: Props) {
-
-    function handleBtnBack() {
-        ModalOn(false)
-    }
+export default function PerfilUser() {
+    const { setModal } = useGlobalContext();
 
     return (
         <div className={styles["containerPerfilUser"]}>
             <div className={styles["headerPerfilUser"]}>
                 <div className={styles["btnBack"]}>
-                    <Image src={Set} alt='Voltar' onClick={handleBtnBack} />
+                    <Image src={Set} alt='Voltar' onClick={() => setModal(false)} />
                 </div>
                 <Image src={Photo} alt='Foto de Perfil' className={styles["ImagePerfilUser"]} />
                 <h2>Isabela Ferreira</h2>

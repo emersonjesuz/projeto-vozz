@@ -12,6 +12,7 @@ export default function Header() {
         className={styles["arrow-left"]}
         src={arrowLeftIcon}
         alt="seta para voltar"
+        priority={true}
         onClick={() => router.back()}
       />
       <Image className={styles.logo} src={logoVozzImage} alt="logo" />

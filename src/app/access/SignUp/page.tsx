@@ -14,6 +14,7 @@ import facebookIcon from "../../../assets/icons/facebook-icon.svg";
 import googleIcon from "../../../assets/icons/google-icon.svg";
 import styles from "./styles.module.scss";
 import Image from "next/image";
+import Api from "@/connections/api";
 
 export default function SignUn() {
   const [handleChekbox, setHandleCheckbox] = useState(false);
@@ -24,10 +25,15 @@ export default function SignUn() {
     const provider = new GoogleAuthProvider();
     try {
       const result = await signInWithPopup(auth, provider);
-      console.log(result);
+      const providerData = result.user.providerData;
+
+      if (!providerData.length) return console.log("problemas");
+      // melhorias a fazer
+      await createAccount(providerData[0].displayName, providerData[0].uid);
       navegate.push("/access/Perfil");
     } catch (error) {
       console.log(error);
+      console.log("forma de login indisponivel no momento");
     }
   }
   async function facebookSignIn(event: FormEvent) {
@@ -49,6 +55,15 @@ export default function SignUn() {
     if (handleChekbox) {
       navegate.push("/access/Register");
     }
+  }
+
+  async function createAccount(name: string, uid: any) {
+    const { data } = await Api.post("/account/external", {
+      name,
+      uid,
+    });
+
+    console.log(data);
   }
 
   return (
