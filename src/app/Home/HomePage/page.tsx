@@ -12,13 +12,13 @@ import IconHome from '../../../assets/Home/Icone_Home On.svg';
 import Particip from '../../../assets/Home/Icone_Participar Off.svg';
 import Pincel from '../../../assets/Home/Pincel.svg';
 import Clip from '../../../assets/Home/clip.svg';
-/* import userHomeProvider from '../../../hooks/userHomeProvider'; */
 import styles from "./styles.module.scss";
-/* import useHome from '@/hooks/Home/useHome'; */
+import { useGlobalContext } from '@/contexts/ContextHome';
+
 
 
 export default function HomePage() {
-  /* const { isAtivedPerfilUser } = useHome(); */
+  const { modal } = useGlobalContext();
   const [isInputFocused, setIsInputFocused] = useState(false);
 
 
@@ -52,7 +52,7 @@ export default function HomePage() {
         </div>
         {/* Fazer disso abaixo um componente */}
         <Publication />
-        {/*  {isAtivedPerfilUser && <PerfilUser />} */}
+        {modal && <PerfilUser />}
       </div>
       <div className={styles["footerHome"]}>
         <div className={styles["select"]} >

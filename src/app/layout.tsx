@@ -1,6 +1,8 @@
+import { ContextProvider, Provider } from "@/contexts/StateContextHomeType";
 import "../styles/global.scss";
 import type { Metadata } from "next";
 import { Inter } from "next/font/google";
+import { GlobalContextProvider } from "@/contexts/ContextHome";
 const inter = Inter({ subsets: ["latin"] });
 
 export const metadata: Metadata = {
@@ -15,7 +17,12 @@ export default function RootLayout({
 }) {
   return (
     <html lang="pt-br">
-      <body className={inter.className}>{children}</body>
+      <body className={inter.className}>
+        <GlobalContextProvider>
+          {children}
+        </GlobalContextProvider>
+      </body>
     </html>
   );
 }
+
