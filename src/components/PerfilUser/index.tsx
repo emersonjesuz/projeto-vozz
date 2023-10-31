@@ -7,15 +7,15 @@ import Hand from '../../assets/Home/Hand.svg';
 import Band from '../../assets/Home/Band.svg';
 import ArrowButtom from '../../assets/Home/ArrowBottom.svg';
 import Set from '../../assets/header/arrow-left-gray.svg';
+import userHomeProvider from "@/hooks/Home/userHomeProvider";
 
-type Props = {
-    ModalOn: React.Dispatch<React.SetStateAction<boolean>>;
-};
 
-export default function PerfilUser({ ModalOn }: Props) {
+export default function PerfilUser() {
+
+    const { setisAtivedPerfilUser } = userHomeProvider()
 
     function handleBtnBack() {
-        ModalOn(false)
+        setisAtivedPerfilUser(false)
     }
 
     return (
