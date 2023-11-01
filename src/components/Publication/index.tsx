@@ -6,6 +6,7 @@ import Menssager from '../../assets/Home/Menssager.svg';
 import Comp from '../../assets/Home/RT.svg';
 import Share from '../../assets/Home/Share.svg';
 import Config from '../../assets/Home/BotãoMenu.svg'
+import { format } from 'date-fns';
 
 type Feed = {
     id: number
@@ -21,15 +22,29 @@ type Feed = {
     public_comments: number
 }
 
-export default function Publication({ id, profileId, name, userName, photo, profileChecked, date, file, description, public_likes, public_comments }: Feed) {
+export default function Publication({
+    id,
+    profileId,
+    name,
+    userName,
+    photo,
+    profileChecked,
+    date,
+    file,
+    description,
+    public_likes,
+    public_comments
+}: Feed) {
+
+    const formatedDate = format(new Date(date), "dd/MM/yyyy")
 
     return (
         <div className={styles["containerPublish"]}>
             <div className={styles["headerPublish"]}>
-                <Image src={photo} alt='Foto de quem publicou' />
+                <Image src={Photo} alt='Foto de quem publicou' />
                 <h2>{name}</h2>
                 <h4>{userName}</h4>
-                <h5>1m</h5>
+                <h5>{formatedDate}</h5>
                 <Image src={Config} alt='Configurações Publicação' />
             </div>
             <div className={styles["mainPublish"]}>{description}</div>

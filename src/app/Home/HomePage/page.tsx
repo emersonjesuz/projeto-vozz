@@ -12,10 +12,10 @@ import IconHome from '../../../assets/Home/Icone_Home On.svg';
 import Particip from '../../../assets/Home/Icone_Participar Off.svg';
 import Pincel from '../../../assets/Home/Pincel.svg';
 import Clip from '../../../assets/Home/clip.svg';
-/* import userHomeProvider from '../../../hooks/userHomeProvider'; */
 import styles from "./styles.module.scss";
 /* import useHome from '@/hooks/Home/useHome'; */
 import Api from '@/connections/api';
+import { useGlobalContext } from '@/contexts/ContextHome';
 
 type Feed = {
   id: number
@@ -31,39 +31,56 @@ type Feed = {
   public_comments: number
 }
 
-// let feedData: Feed[];
-
-// const getFeed = async () => {
-//   try {
-//     const response = await Api.get('/feed');
-//     console.log(response.data)
-//     feedData = response.data;
-//   } catch (error) {
-//     console.log(error)
-//   }
-// };
-// getFeed()
-
 export default function HomePage() {
+  /* const { isAtivedPerfilUser } = useHome(); */
+  const { modal } = useGlobalContext();
+  const [isInputFocused, setIsInputFocused] = useState(false);
+  const [description, setDescription] = useState('')
+  const [feed, setFeed] = useState<Feed[]>([]);
+  const [countIndex, setCountIndex] = useState(1)
 
   useEffect(() => {
     const getFeed = async () => {
       try {
-        const { data } = await Api.get('/feed');
-        console.log(data)
-        setFeed(data)
+        const response = await Api.get(`/feed/1`);
+        const data: Feed[] = response.data
+        setFeed([...data])
       } catch (error) {
         console.log(error)
       }
     };
-    getFeed()
+    if (countIndex == 1) {
+      setCountIndex(2)
+      getFeed()
+    };
   }, []);
 
-  /* const { isAtivedPerfilUser } = useHome(); */
-  const [isInputFocused, setIsInputFocused] = useState(false);
-  const [description, setDescription] = useState('')
-  const [feed, setFeed] = useState<Feed[]>([])
-  console.log(feed)
+  useEffect(() => {
+    const handleScroll = async () => {
+      const scrollTop = window.scrollY;
+      const scrollHeight = document.documentElement.scrollHeight;
+      const clientHeight = document.documentElement.clientHeight;
+      const scrollPercentage = (scrollTop / (scrollHeight - clientHeight)) * 100;
+
+      if (scrollPercentage > 80) {
+        const response = await Api.get(`/feed/${countIndex}`);
+        const data: Feed[] = response.data
+
+        if (data.length > 1) {
+
+          for (const publication of data) {
+            feed.push(publication)
+          }
+          setFeed([...feed, ...data])
+          setCountIndex(countIndex + 1)
+        }
+      }
+      console.log(countIndex);
+      console.log(feed);
+      console.log('Posição de rolagem:', scrollPercentage, '%');
+    };
+    window.addEventListener('scroll', handleScroll);
+  }, [countIndex]);
 
   const handleInputFocus = () => {
     setIsInputFocused(true);
@@ -85,15 +102,9 @@ export default function HomePage() {
 
       setDescription('')
       feed.unshift(response.data)
-      console.log(feed)
     } catch (error) {
       console.log(error)
     }
-  }
-
-  const clear = () => {
-    setFeed([])
-    console.log(feed)
   }
 
   return (
@@ -120,29 +131,30 @@ export default function HomePage() {
           />
           {isInputFocused ? null : <Image src={Pincel} alt='Caneta' className={styles["imagePincel"]} />}
           <div className={`${styles.containerButtonPublication} ${isInputFocused ? styles.selected : ''}`}>
-            <button><Image src={Clip} alt='Clip' onClick={clear} /></button>
+            <button><Image src={Clip} alt='Clip' /></button>
             <button><Image src={Can} alt='Camera' /></button>
             <button className={styles["btnPublic"]} onClick={handleSubmitPost}><Image src={Arrow} alt='Seta' /></button>
           </div>
         </div>
         {/* Fazer disso abaixo um componente */}
-        {feed.map((pub) => (
+        {feed.map((publication) => (
           <Publication
-            key={pub.id}
-            id={pub.id}
-            profileId={pub.profileId}
-            name={pub.name}
-            userName={pub.userName}
-            photo={pub.photo}
-            profileChecked={pub.profileChecked}
-            date={pub.date}
-            file={pub.file}
-            description={pub.description}
-            public_likes={pub.public_likes}
-            public_comments={pub.public_comments}
+            key={publication.id}
+            id={publication.id}
+            profileId={publication.profileId}
+            name={publication.name}
+            userName={publication.userName}
+            photo={publication.photo}
+            profileChecked={publication.profileChecked}
+            date={publication.date}
+            file={publication.file}
+            description={publication.description}
+            public_likes={publication.public_likes}
+            public_comments={publication.public_comments}
           />
         ))}
         {/*  {isAtivedPerfilUser && <PerfilUser />} */}
+        {modal && <PerfilUser />}
       </div>
       <div className={styles["footerHome"]}>
         <div className={styles["select"]} >
