@@ -31,56 +31,77 @@ type Feed = {
   public_comments: number
 }
 
+type PageProps = {
+  pubsData: Feed[]
+}
+
 export default function HomePage() {
+
   /* const { isAtivedPerfilUser } = useHome(); */
-  const { modal } = useGlobalContext();
+  const { modal, data, setData } = useGlobalContext();
   const [isInputFocused, setIsInputFocused] = useState(false);
   const [description, setDescription] = useState('')
-  const [feed, setFeed] = useState<Feed[]>([]);
+  // const [feed, setFeed] = useState<Feed[]>(data);
   const [countIndex, setCountIndex] = useState(1)
+  const [callApi, setCallApi] = useState(true)
 
   useEffect(() => {
     const getFeed = async () => {
       try {
         const response = await Api.get(`/feed/1`);
-        const data: Feed[] = response.data
-        setFeed([...data])
+        const responseData: Feed[] = response.data
+        setData([...responseData])
       } catch (error) {
         console.log(error)
       }
     };
-    if (countIndex == 1) {
+    if (countIndex == 1 && callApi) {
+      setCallApi(false)
       setCountIndex(2)
       getFeed()
+
+      setTimeout(() => {
+        setCallApi(true)
+      }, 3000)
     };
   }, []);
 
-  useEffect(() => {
+  // useEffect(() => {
+  if (countIndex > 1 && callApi) {
     const handleScroll = async () => {
       const scrollTop = window.scrollY;
       const scrollHeight = document.documentElement.scrollHeight;
       const clientHeight = document.documentElement.clientHeight;
       const scrollPercentage = (scrollTop / (scrollHeight - clientHeight)) * 100;
 
-      if (scrollPercentage > 80) {
+      if (scrollPercentage > 80 && scrollPercentage < 85) {
+        setCallApi(false)
         const response = await Api.get(`/feed/${countIndex}`);
-        const data: Feed[] = response.data
+        const responseData: Feed[] = response.data
 
-        if (data.length > 1) {
+        if (responseData.length > 0) {
 
-          for (const publication of data) {
-            feed.push(publication)
-          }
-          setFeed([...feed, ...data])
+          // for (const publication of responseData) {
+          //   data.push(publication)
+          // }
+          setData([...data, ...responseData])
           setCountIndex(countIndex + 1)
+
+          if (responseData.length >= 10) {
+            setTimeout(() => {
+              setCallApi(true)
+            }, 3000)
+          }
         }
       }
       console.log(countIndex);
-      console.log(feed);
+      console.log(data);
       console.log('Posição de rolagem:', scrollPercentage, '%');
     };
+
     window.addEventListener('scroll', handleScroll);
-  }, [countIndex]);
+  }
+  // }, [countIndex]);
 
   const handleInputFocus = () => {
     setIsInputFocused(true);
@@ -101,7 +122,7 @@ export default function HomePage() {
       })
 
       setDescription('')
-      feed.unshift(response.data)
+      data.unshift(response.data)
     } catch (error) {
       console.log(error)
     }
@@ -137,7 +158,7 @@ export default function HomePage() {
           </div>
         </div>
         {/* Fazer disso abaixo um componente */}
-        {feed.map((publication) => (
+        {data.map((publication) => (
           <Publication
             key={publication.id}
             id={publication.id}
