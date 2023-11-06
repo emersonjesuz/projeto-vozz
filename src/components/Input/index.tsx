@@ -29,15 +29,26 @@ export default function Input({
 }: Props) {
   const [showPassword, setShowPassword] = useState(false);
 
+  const isInputEmpty = value.trim() === "";
+
   return (
     <div className={styles.container}>
       <div
         className={`${styles["input-wrapper"]} ${
-          errorMessage ? styles["error-border"] : ""
+          errorMessage
+            ? styles["error-border"]
+            : isInputEmpty
+            ? styles["empty-border"]
+            : styles["ok-border"]
         }`}
       >
         <div className={styles["input-form"]}>
-          <label htmlFor={name}> {label} </label>
+          <label
+            htmlFor={name}
+            className={errorMessage ? styles["error-label"] : ""}
+          >
+            {label}
+          </label>
 
           <div className={styles["content-input"]}>
             <div className={styles["img-eye"]}>

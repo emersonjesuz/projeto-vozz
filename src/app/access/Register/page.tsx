@@ -4,60 +4,75 @@ import checkIcon from "../../../assets/icons/check.svg";
 import errorIcon from "../../../assets/icons/error-icon.svg";
 import Input from "../../../components/Input";
 import styles from "./styles.module.scss";
+import api from '../../../services/axios';
+import { useRouter } from 'next/navigation'
 
 type NewError = {
   name: string;
   email: string;
-  birthday: string;
+  birth: string;
   password: string;
 };
 
 function Register() {
+  const navegate = useRouter();
   const [errors, setErrors] = useState<NewError>({
     name: "",
     email: "",
-    birthday: "",
+    birth: "",
     password: "",
+    // code: "",
   });
 
   const [name, setName] = useState("");
   const [email, setEmail] = useState("");
-  const [birthday, setBirthday] = useState("");
+  const [birth, setBirthday] = useState("");
   const [password, setPassword] = useState("");
-
   const [showImage, setShowImage] = useState(false);
 
-  //não esquecer o async await
-  const handleSubmit = (event: FormEvent) => {
+  async function handleSubmit(event: FormEvent) {
     event.preventDefault();
 
     const checkEmail = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
     const newErrors: NewError = {
       name: "",
       email: "",
-      birthday: "",
+      birth: "",
       password: "",
     };
+    
+    try {
+      if (!name) {
+        newErrors.name = "O nome é obrigatório.";
+      }
 
-    if (!name) {
-      newErrors.name = "O nome é obrigatório";
-    }
+      if (!email || email.search(checkEmail) === -1) {
+        newErrors.email = !email
+          ? "O email é obrigatório."
+          : "Confira se você digitou corretamente.";
+      }
 
-    if (!email || email.search(checkEmail) === -1) {
-      newErrors.email = !email ? "O email é obrigatório" : "Email inválido";
-    }
+      if (!birth) {
+        newErrors.birth = "A data de nascimento é obrigatória.";
+      }
 
-    if (!birthday) {
-      newErrors.birthday = "A data de nascimento é obrigatória";
-    }
+      if (!password || password.length < 8) {
+        newErrors.password = !password
+          ? "Digite uma senha."
+          : "Deve conter pelo menos 8 caracteres.";
+      }
+      setShowImage(true);
+      setErrors(newErrors);
 
-    if (!password || password.length < 8) {
-      newErrors.password = !password
-        ? "Defina uma senha"
-        : "A senha deve ter pelo menos 8 caracteres";
+       const response =  await api.post('/registerUser', {
+          name, email, birth, password
+        });
+        console.log(response);
+        navegate.push("/access/Perfil");
+      
+      }catch (error:any){
+        setErrors(newErrors);
     }
-    setShowImage(true);
-    setErrors(newErrors);
   };
 
   return (
@@ -98,13 +113,13 @@ function Register() {
             <Input
               type="date"
               label="Data de nascimento"
-              name="birthday"
+              name="birth"
               placeholder="DD/MM/AAAA"
-              value={birthday}
+              value={birth}
               handleChange={(event) => setBirthday(event.target.value)}
               showImage={showImage}
-              errorMessage={errors.birthday}
-              iconSrc={errors.birthday ? errorIcon : checkIcon}
+              errorMessage={errors.birth}
+              iconSrc={errors.birth ? errorIcon : checkIcon}
             />
             <div className={styles["eyes"]}></div>
             <Input
@@ -118,9 +133,8 @@ function Register() {
               errorMessage={errors.password}
               iconSrc={errors.password ? errorIcon : checkIcon}
             />
-
-            <div>
-              <button type="submit">Inscrever-se</button>
+            <div className={styles["button"]}>
+              <button type="submit">Cadastrar</button>
             </div>
           </div>
         </form>
