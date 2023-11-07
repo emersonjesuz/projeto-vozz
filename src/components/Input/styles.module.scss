@@ -11,17 +11,16 @@
             width: 32.7rem;
             height: 4rem;
             border-radius: 20px;
-            border: none;
             background: #E6E6E6;
             padding: 2rem;
             font-size: 1.2rem;
             font-family: $font-nunito-sans;
             color: #807D7D;
-            font-size: 1.2rem;
             font-style: normal;
             font-weight: 600;
             line-height: normal;
             margin-bottom: 1.6rem;
+            border: none;
         }
 
         input[type="date"] {
@@ -69,30 +68,27 @@
             margin-bottom: 0.8rem;
         }
 
-        button {
-            margin-top: 6.6rem;
+        .input-form {
+            display: flex;
+            flex-direction: column;
+            align-items: baseline;
+
         }
 
         .content-input {
 
             display: flex;
-            margin: 1rem;
-        }
-
-        .eyes {
-            position: relative;
+            align-items: center;
+            justify-content: space-evenly;
+            margin-left: 2.4rem;
 
             img {
-                width: 2.5rem;
-                height: 1.9rem;
-                position: absolute;
-                right: 5rem;
-                bottom: 0rem;
+                margin-left: 0.8rem;
+                margin-bottom: 1.2rem;
             }
         }
 
         .img-eye {
-            width: 100%;
             position: relative;
 
             img {
@@ -109,13 +105,21 @@
             font-weight: 300;
             line-height: normal;
             margin-top: -1rem;
+            margin-bottom: 2rem;
             display: flex;
             justify-content: end;
+
         }
 
         .error-label {
             color: #FB263C;
             font-weight: 600;
+            font-size: 1.2rem;
+        }
+
+        .error-placeholder::placeholder {
+            color: #FB263C;
+
         }
 
         .input-wrapper input {
@@ -129,19 +133,21 @@
         }
 
         .input-wrapper.error-border input {
-            border: 2px solid red;
+            border: 2px solid #FB263C;
+            width: 32.5rem;
+            height: 4rem;
+
+        }
+
+        .ok-border input {
+            width: 32.5rem;
         }
 
         .input-wrapper {
             display: flex;
             align-items: center;
-            gap: 1rem;
+            // gap: 1rem;
 
-            img {
-                display: flex;
-                flex-direction: row;
-
-            }
         }
     }
 }

@@ -1,8 +1,9 @@
-import { ContextProvider, Provider } from "@/contexts/StateContextHomeType";
+// import { ContextProvider, Provider } from "@/contexts/StateContextHomeType";
 import "../styles/global.scss";
 import type { Metadata } from "next";
 import { Inter } from "next/font/google";
 import { GlobalContextProvider } from "@/contexts/ContextHome";
+import NextAuthSessionProvider from "@/providers/sessionProvider";
 const inter = Inter({ subsets: ["latin"] });
 
 export const metadata: Metadata = {
@@ -19,7 +20,9 @@ export default function RootLayout({
     <html lang="pt-br">
       <body className={inter.className}>
         <GlobalContextProvider>
+          <NextAuthSessionProvider>
           {children}
+          </NextAuthSessionProvider>
         </GlobalContextProvider>
       </body>
     </html>
