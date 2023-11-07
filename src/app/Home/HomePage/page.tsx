@@ -17,6 +17,7 @@ import styles from "./styles.module.scss";
 import Api from '@/connections/api';
 import { useGlobalContext } from '@/contexts/ContextHome';
 
+
 type Feed = {
   id: number
   profileId: number
@@ -81,9 +82,6 @@ export default function HomePage() {
 
         if (responseData.length > 0) {
 
-          // for (const publication of responseData) {
-          //   data.push(publication)
-          // }
           setData([...data, ...responseData])
           setCountIndex(countIndex + 1)
 
@@ -94,9 +92,9 @@ export default function HomePage() {
           }
         }
       }
-      console.log(countIndex);
-      console.log(data);
-      console.log('Posição de rolagem:', scrollPercentage, '%');
+      // console.log(countIndex);
+      // console.log(data);
+      // console.log('Posição de rolagem:', scrollPercentage, '%');
     };
 
     window.addEventListener('scroll', handleScroll);
