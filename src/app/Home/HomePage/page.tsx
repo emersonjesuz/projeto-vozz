@@ -112,9 +112,11 @@ export default function HomePage() {
   };
 
   const handleSubmitPost = async () => {
+    const profileId: number = Number(localStorage.getItem('profileId'));
+
     try {
       const response = await Api.post('/publications', {
-        profileId: 1,
+        profileId,
         file: '',
         description
       })

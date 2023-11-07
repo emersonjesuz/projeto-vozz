@@ -9,7 +9,7 @@ export default function Interests() {
 
   function handleSubmitToInterests(event: FormEvent) {
     event.preventDefault();
-    navegate.push("/Home");
+    navegate.push("/Home/HomePage");
   }
 
   return (
