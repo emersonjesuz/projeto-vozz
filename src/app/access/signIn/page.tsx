@@ -6,7 +6,7 @@ import {
 } from "firebase/auth";
 import Image from "next/image";
 import Link from "next/link";
-import { FormEvent, useState } from "react";
+import { FormEvent, SyntheticEvent, useState } from "react";
 import checkboxChekedIcon from "../../../assets/icons/checkbox-checked.svg";
 import checkboxVoidIcon from "../../../assets/icons/checkbox-void.svg";
 import facebookIcon from "../../../assets/icons/facebook-icon.svg";
@@ -14,10 +14,20 @@ import googleIcon from "../../../assets/icons/google-icon.svg";
 import { auth } from "../../../services/firebase";
 import styles from "./styles.module.scss";
 import { useRouter } from "next/navigation";
+<<<<<<< HEAD
 import Api from "@/connections/api";
 
 export default function SignIn() {
   const [handleChekbox, setHandleChekbox] = useState<boolean>(false);
+=======
+import { signIn } from "next-auth/react";
+
+
+export default function SignIn() {
+  const [handleChekbox, setHandleCheckbox] = useState(false);
+  const [email, setEmail] = useState<string>('')
+  const [password, setPassword] = useState<string>('')
+>>>>>>> e3c20e68ca68568dc64d3abde960b93df6cfea65
   const navegate = useRouter();
 
   async function googleSignIn(event: FormEvent) {
@@ -53,6 +63,7 @@ export default function SignIn() {
     }
   }
 
+<<<<<<< HEAD
   async function createAccount(name: string, uid: any) {
     try {
       const { data } = await Api.post("/account/external", {
@@ -67,8 +78,22 @@ export default function SignIn() {
   }
 
   async function handleSubmit(event: FormEvent) {
+=======
+  async function handleSubmit(event: SyntheticEvent) {
+>>>>>>> e3c20e68ca68568dc64d3abde960b93df6cfea65
     event.preventDefault();
-    navegate.push("/access/Perfil");
+    const result = await signIn('credentials', {
+      email,
+      password,
+      redirect: false
+    })
+
+    if(result?.error) {
+      console.log(result);
+      return
+    }
+    
+    navegate.replace("/access/Perfil");
     console.log("ola");
   }
 
@@ -77,7 +102,7 @@ export default function SignIn() {
       <div className={styles["content-title"]}>
         <h1>Entre com a sua conta</h1>
       </div>
-      <form onChange={handleSubmit} className={styles["content-form"]}>
+      <form onSubmit={handleSubmit} className={styles["content-form"]}>
         <div className={styles["box-input"]}>
           <label htmlFor="email">E-mail</label>
           <input
@@ -85,6 +110,7 @@ export default function SignIn() {
             placeholder="insira seu e-mail"
             name="email"
             type="text"
+            onChange={(event) => setEmail(event?.target.value)}
           />
         </div>
         <div className={styles["box-input"]}>
@@ -93,11 +119,12 @@ export default function SignIn() {
             id="password"
             placeholder="insira sua senha"
             name="password"
-            type="text"
+            type="password"
+            onChange={(event) => setPassword(event?.target.value)}
           />
           <Link href={"/"}>Esqueci minha senha</Link>
         </div>
-        <button onClick={handleSubmit} className="button-blue">
+        <button type="submit" className="button-blue">
           Entrar
         </button>
         <div className={styles.checkbox}>

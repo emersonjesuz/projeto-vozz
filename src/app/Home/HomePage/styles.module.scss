@@ -1,0 +1,138 @@
+@import "../../../styles/fonts";
+@import "../../../styles/colors";
+
+@media (max-width: 37.5rem) {
+    .containerHome {
+        nav {
+            display: flex;
+            justify-content: center;
+
+            gap: 2.4rem;
+            height: 4.6rem;
+
+            border-bottom: 1px solid #807D7D;
+
+            h4 {
+                font-family: $font-nunito-sans;
+                font-size: 1.6rem;
+                font-style: normal;
+                font-weight: 700;
+                line-height: normal;
+
+                color: #807D7D;
+            }
+
+            .select {
+                border-bottom: 3px solid #1992B8;
+            }
+        }
+
+        .publication {
+            /* padding-top: 3.2rem; */
+            padding: 3.2rem 2.4rem;
+
+            label {
+                font-family: $font-nunito-sans;
+                font-size: 1.2rem;
+                font-style: normal;
+                font-weight: 300;
+                line-height: normal;
+            }
+
+            input {
+                margin-top: 0.8rem;
+
+                font-family: $font-nunito-sans;
+                font-size: 1.4rem;
+                font-style: normal;
+                font-weight: 600;
+                line-height: normal;
+            }
+
+            textarea {
+
+                margin-top: 0.8rem;
+
+                font-family: $font-nunito-sans;
+                font-size: 1.4rem;
+                font-style: normal;
+                font-weight: 600;
+                line-height: normal;
+
+            }
+
+            .imagePincel {
+                position: absolute;
+
+                top: 21.8rem;
+                left: 30.5rem;
+            }
+
+            .selected {
+                display: flex !important;
+            }
+
+            .selectedInput {
+                background-color: #FFF;
+                color: black;
+            }
+
+            //Aparecer quando clicar no input
+            .containerButtonPublication {
+                display: none;
+                justify-content: end;
+
+                gap: 0.8rem;
+                margin-top: 0.8rem;
+
+                button {
+                    padding: 0.8rem;
+
+                    border-radius: 20px;
+                    border: 1px solid #1992B8;
+                    background: #FFF;
+                    box-shadow: 1px 1px 2px 0.2px rgba(0, 0, 0, 0.25);
+                }
+
+                .btnPublic {
+                    border-radius: 50px;
+                    background: #1992B8;
+                }
+            }
+
+        }
+
+        .footerHome {
+            display: flex;
+            align-items: center;
+            justify-content: space-evenly;
+
+            position: fixed;
+            top: 75.2rem;
+
+            border-top: 1px solid #CCC8C7;
+
+            width: 100%;
+            height: 6rem;
+
+            background-color: #FFF;
+
+            div {
+                display: flex;
+                flex-direction: column;
+                align-items: center;
+                justify-content: center;
+            }
+
+            .select {
+                height: 5.2rem;
+                width: 5.2rem;
+
+                border-radius: 50px;
+                background: #FFF;
+                box-shadow: 1px 1px 2px 0px rgba(0, 0, 0, 0.25);
+            }
+        }
+
+    }
+}

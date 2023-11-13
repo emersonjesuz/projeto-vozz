@@ -1,5 +1,6 @@
 "use client";
 
+import { Feed } from "@/types/FeedTypes";
 import {
   createContext,
   useContext,
@@ -12,15 +13,11 @@ interface Props {
   children: React.ReactNode;
 }
 
-type DataType = {
-  firstName: string;
-};
-
 interface ContextProps {
   userId: string;
   setUserId: Dispatch<SetStateAction<string>>;
-  /* data: DataType[],
-    setData: Dispatch<SetStateAction<DataType[]>>, */
+  data: Feed[];
+  setData: Dispatch<SetStateAction<Feed[]>>;
   modal: boolean;
   setModal: Dispatch<SetStateAction<boolean>>;
   handleChekbox: boolean;
@@ -30,8 +27,8 @@ interface ContextProps {
 const GlobalContext = createContext<ContextProps>({
   userId: "",
   setUserId: (): string => "",
-  /* data: [],
-    setData (): DataType[] => [], */
+  data: [],
+  setData: (): Feed[] => [],
   modal: false,
   setModal: (): boolean => false,
   handleChekbox: false,
@@ -41,16 +38,18 @@ const GlobalContext = createContext<ContextProps>({
 export const GlobalContextProvider = ({ children }: Props) => {
   const [userId, setUserId] = useState("");
   const [modal, setModal] = useState(false);
+  const [data, setData] = useState<[] | Feed[]>([]);
   const [handleChekbox, setHandleChekbox] = useState<boolean>(false);
-  /* const [data, setData] = useState<[] | DataType[]>([]); */
 
   const props = {
-    handleChekbox,
-    setHandleChekbox,
     userId,
     setUserId,
     modal,
     setModal,
+    data,
+    setData,
+    handleChekbox,
+    setHandleChekbox,
   };
 
   return (
