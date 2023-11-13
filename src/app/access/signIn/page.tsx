@@ -14,9 +14,10 @@ import googleIcon from "../../../assets/icons/google-icon.svg";
 import { auth } from "../../../services/firebase";
 import styles from "./styles.module.scss";
 import { useRouter } from "next/navigation";
+import Api from "@/connections/api";
 
 export default function SignIn() {
-  const [handleChekbox, setHandleCheckbox] = useState(false);
+  const [handleChekbox, setHandleChekbox] = useState<boolean>(false);
   const navegate = useRouter();
 
   async function googleSignIn(event: FormEvent) {
@@ -24,7 +25,16 @@ export default function SignIn() {
     const provider = new GoogleAuthProvider();
     try {
       const result = await signInWithPopup(auth, provider);
+      const providerData = result.user.providerData;
 
+      const name = providerData[0].displayName;
+      const uid = providerData[0].uid;
+
+      if (!name || !uid) return console.log("problemas");
+
+      await createAccount(name, uid);
+
+      navegate.push("/access/Perfil");
       console.log(result);
     } catch (error) {
       console.log(error);
@@ -38,6 +48,19 @@ export default function SignIn() {
       const result = await signInWithPopup(auth, provider);
 
       console.log(result);
+    } catch (error) {
+      console.log(error);
+    }
+  }
+
+  async function createAccount(name: string, uid: any) {
+    try {
+      const { data } = await Api.post("/account/external", {
+        name,
+        uid,
+      });
+
+      console.log(data);
     } catch (error) {
       console.log(error);
     }
@@ -79,7 +102,7 @@ export default function SignIn() {
         </button>
         <div className={styles.checkbox}>
           <Image
-            onClick={() => setHandleCheckbox(!handleChekbox)}
+            onClick={() => setHandleChekbox(!handleChekbox)}
             src={handleChekbox ? checkboxChekedIcon : checkboxVoidIcon}
             alt="checkbox"
           />

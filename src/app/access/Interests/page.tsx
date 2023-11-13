@@ -3,6 +3,7 @@ import { FormEvent } from "react";
 import styles from "./styles.module.scss";
 import ButtonInterests from "@/components/ButtonInterests";
 import { useRouter } from "next/navigation";
+import Link from "next/link";
 
 export default function Interests() {
   const navegate = useRouter();
@@ -16,7 +17,10 @@ export default function Interests() {
     <div className={styles["container-interests"]}>
       <div className={styles["container-interests-title"]}>
         <h1>Selecione os seus interesses</h1>
-        <h2>Obtenha recomendações personalizadas sobre as pautas políticas que mais lhe interessam.</h2>
+        <h2>
+          Obtenha recomendações personalizadas sobre as pautas políticas que
+          mais lhe interessam.
+        </h2>
       </div>
       <div className={styles["container-interests-btn"]}>
         <div className={styles["container-btn"]}>
@@ -43,8 +47,12 @@ export default function Interests() {
           <ButtonInterests text="ciência e tecnologia" />
         </div>
       </div>
-      <button className={styles["btn"]}>Avançar</button>
-      <h2 className={styles["next"]} onClick={handleSubmitToInterests}>Pular</h2>
+      <button onClick={handleSubmitToInterests} className={styles["btn"]}>
+        Avançar
+      </button>
+      <Link href={"/HomePage"} className={styles["next"]}>
+        Pular
+      </Link>
     </div>
   );
 }

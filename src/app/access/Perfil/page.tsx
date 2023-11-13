@@ -8,7 +8,7 @@ import styles from "./styles.module.scss";
 import { useRouter } from "next/navigation";
 
 export default function Perfil() {
-  const [buttonSelectPerson, setButtonSelectPerson] = useState(false);
+  const [buttonSelectPerson, setButtonSelectPerson] = useState(true);
   const [buttonSelectPolitical, setButtonSelectPolitical] = useState(false);
   const [buttonSelectInstitution, setButtonSelectInstitution] = useState(false);
   const navegate = useRouter();
@@ -30,6 +30,13 @@ export default function Perfil() {
 
   function handleSubmitToPerfil(event: FormEvent) {
     event.preventDefault();
+    if (
+      !buttonSelectInstitution &&
+      !buttonSelectPerson &&
+      !buttonSelectPolitical
+    )
+      return console.log("escolha um perfil");
+
     navegate.push("/access/Interests");
   }
 
@@ -68,7 +75,7 @@ export default function Perfil() {
           chosenButton={"institution"}
         />
       </div>
-      <button className={styles["btn"]} onClick={handleSubmitToPerfil}>
+      <button className={"button-blue"} onClick={handleSubmitToPerfil}>
         Avançar
       </button>
     </div>

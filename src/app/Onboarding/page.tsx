@@ -54,7 +54,9 @@ const screen4 = {
 };
 
 export default function Onboarding() {
-  const [screen, setScreen] = useState<Screen>(screen1);
+  const [screen, setScreen] = useState<Screen>(
+    localStorage.getItem("isLogin") ? screen4 : screen1
+  );
   const navegate = useRouter();
 
   function forwardScreen(event: FormEvent) {

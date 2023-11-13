@@ -10,6 +10,7 @@ type NewError = {
   email: string;
   birthday: string;
   password: string;
+  code?: string;
 };
 
 function Register() {
@@ -64,70 +65,70 @@ function Register() {
   };
 
   return (
-    <>
-      <div className={styles.container}>
-        <div className={styles["title"]}>
-          <h1>Criar sua conta</h1>
-          <span>
-            Primeira vez no Vozzz? Precisamos de alguns dados para criar sua
-            conta e melhorar a sua experiência aqui.
-          </span>
-        </div>
-
-        <form onSubmit={handleSubmit}>
-          <div className={styles["form-register"]}>
-            <Input
-              type="text"
-              label="Nome"
-              name="name"
-              placeholder="nome completo"
-              value={name}
-              handleChange={(event) => setName(event.target.value)}
-              showImage={showImage}
-              errorMessage={errors.name}
-              iconSrc={errors.name ? errorIcon : checkIcon}
-            />
-            <Input
-              type="text"
-              label="E-mail"
-              name="email"
-              placeholder="e-mail"
-              value={email}
-              handleChange={(event) => setEmail(event.target.value)}
-              showImage={showImage}
-              errorMessage={errors.email}
-              iconSrc={errors.email ? errorIcon : checkIcon}
-            />
-            <Input
-              type="date"
-              label="Data de nascimento"
-              name="birthday"
-              placeholder="DD/MM/AAAA"
-              value={birthday}
-              handleChange={(event) => setBirthday(event.target.value)}
-              showImage={showImage}
-              errorMessage={errors.birthday}
-              iconSrc={errors.birthday ? errorIcon : checkIcon}
-            />
-            <div className={styles["eyes"]}></div>
-            <Input
-              type={"password"}
-              label="Defina uma senha"
-              name="password"
-              placeholder="insira aqui sua senha"
-              value={password}
-              handleChange={(event) => setPassword(event.target.value)}
-              showImage={showImage}
-              errorMessage={errors.password}
-              iconSrc={errors.password ? errorIcon : checkIcon}
-            />
-            <div className={styles["button"]}>
-              <button type="submit">Cadastrar</button>
-            </div>
-          </div>
-        </form>
+    <div className={styles.container}>
+      <div className={styles["title"]}>
+        <h1>Criar sua conta</h1>
+        <span>
+          Primeira vez no Vozzz? Precisamos de alguns dados para criar sua conta
+          e melhorar a sua experiência aqui.
+        </span>
       </div>
-    </>
+
+      <form onSubmit={handleSubmit}>
+        <div className={styles["form-register"]}>
+          <Input
+            type="text"
+            label="Nome"
+            name="name"
+            placeholder="nome completo"
+            value={name}
+            handleChange={(event) => setName(event.target.value)}
+            showImage={showImage}
+            errorMessage={errors.name}
+            iconSrc={errors.name ? errorIcon : checkIcon}
+          />
+          <Input
+            type="text"
+            label="E-mail"
+            name="email"
+            placeholder="e-mail"
+            value={email}
+            handleChange={(event) => setEmail(event.target.value)}
+            showImage={showImage}
+            errorMessage={errors.email}
+            iconSrc={errors.email ? errorIcon : checkIcon}
+          />
+          <Input
+            type="date"
+            label="Data de nascimento"
+            name="birthday"
+            placeholder="DD/MM/AAAA"
+            value={birthday}
+            handleChange={(event) => setBirthday(event.target.value)}
+            showImage={showImage}
+            errorMessage={errors.birthday}
+            iconSrc={errors.birthday ? errorIcon : checkIcon}
+          />
+          <div className={styles["eyes"]}></div>
+          <Input
+            type={"password"}
+            label="Defina uma senha"
+            name="password"
+            placeholder="insira aqui sua senha"
+            value={password}
+            handleChange={(event) => setPassword(event.target.value)}
+            showImage={showImage}
+            errorMessage={errors.password}
+            iconSrc={errors.password ? errorIcon : checkIcon}
+          />
+          <div className={styles["button"]}>
+            <button className="button-blue" type="submit">
+              Cadastrar
+            </button>
+          </div>
+        </div>
+      </form>
+    </div>
   );
 }
 
