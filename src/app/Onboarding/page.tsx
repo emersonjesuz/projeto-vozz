@@ -3,7 +3,7 @@ import styles from "./styles.module.scss";
 import Illustration1 from "../../assets/onboarding/ilustra-01.svg";
 import Illustration2 from "../../assets/onboarding/ilustra-02.svg";
 import Illustration3 from "../../assets/onboarding/ilustra-03.svg";
-import Logo from "../../assets/onboarding/logo-icon.svg";
+import Logo from "../../assets/onboarding/Logo-icon.svg";
 import BtnForward from "../../assets/onboarding/btn-forward.svg";
 import BtnReturn from "../../assets/onboarding/btn-return.svg";
 import BtnReturnGray from "../../assets/header/arrow-left-gray.svg";
