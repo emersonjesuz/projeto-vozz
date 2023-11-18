@@ -6,6 +6,7 @@ import iconFace3 from "../../../assets/icons/face3.svg";
 import CardPerfil from "../../../components/CardPerfil";
 import styles from "./styles.module.scss";
 import { useRouter } from "next/navigation";
+import Api from "@/connections/api";
 
 export default function Perfil() {
   const [buttonSelectPerson, setButtonSelectPerson] = useState(true);
@@ -28,16 +29,41 @@ export default function Perfil() {
     }
   };
 
-  function handleSubmitToPerfil(event: FormEvent) {
+  async function handleSubmitToPerfil(event: FormEvent) {
     event.preventDefault();
-    if (
-      !buttonSelectInstitution &&
-      !buttonSelectPerson &&
-      !buttonSelectPolitical
-    )
-      return console.log("escolha um perfil");
+    const isChecked =
+      !buttonSelectInstitution && !buttonSelectPerson && !buttonSelectPolitical;
 
-    navegate.push("/access/Interests");
+    if (isChecked) return console.log("escolha um perfil");
+
+    const storage = localStorage.getItem("userInfo");
+    if (!storage) return;
+
+    let typeProfile = "";
+
+    if (buttonSelectPerson) {
+      typeProfile = "cidadao";
+    } else if (buttonSelectPolitical) {
+      typeProfile = "politico";
+    } else if (buttonSelectInstitution) {
+      typeProfile = "instituicao";
+    }
+
+    try {
+      const { id } = JSON.parse(storage);
+
+      const { data } = await Api.post("/profile/create", {
+        userId: id,
+        type: typeProfile,
+      });
+      console.log(data);
+      const profileId = { id: data.id };
+      localStorage.setItem("userInfo", JSON.stringify(profileId));
+
+      navegate.push("/access/Interests");
+    } catch (error) {
+      console.log(error);
+    }
   }
 
   return (

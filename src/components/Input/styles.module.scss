@@ -1,153 +1,144 @@
 @import "../../styles/fonts";
 @import "../../styles/colors";
 @media (max-width: 37.5rem) {
+  .container {
+    display: flex;
+    flex-direction: column;
 
-    .container {
-        display: flex;
-        flex-direction: column;
-
-        input,
-        .input-password [type="text"] {
-            width: 32.7rem;
-            height: 4rem;
-            border-radius: 20px;
-            background: #E6E6E6;
-            padding: 2rem;
-            font-size: 1.2rem;
-            font-family: $font-nunito-sans;
-            color: #807D7D;
-            font-style: normal;
-            font-weight: 600;
-            line-height: normal;
-            margin-bottom: 1.6rem;
-            border: none;
-        }
-
-        input[type="date"] {
-            width: 32.7rem;
-            height: 2rem;
-            border-radius: 20px;
-            padding: 2rem;
-            font-size: 1.2rem;
-            font-family: $font-nunito-sans;
-            color: #807D7D;
-            font-size: 1.2rem;
-            font-style: normal;
-            font-weight: 600;
-            line-height: normal;
-            text-transform: uppercase;
-            border: none;
-        }
-
-        ::-webkit-calendar-picker-indicator {
-            background: transparent;
-        }
-
-        input:focus {
-            background: #FFFFFF;
-            font-size: 1.4rem;
-            font-family: $font-nunito-sans;
-            color: #333333;
-            font-style: normal;
-            font-weight: 600;
-            line-height: normal;
-            border-radius: 40px;
-            border: 2px solid #807D7D;
-            outline: 0;
-        }
-
-        label {
-
-            font-size: 1.2rem;
-            font-family: $font-nunito-sans;
-            color: #333333;
-            font-size: 1.2rem;
-            font-style: normal;
-            font-weight: 300;
-            line-height: normal;
-            margin-bottom: 0.8rem;
-        }
-
-        .input-form {
-            display: flex;
-            flex-direction: column;
-            align-items: baseline;
-
-        }
-
-        .content-input {
-
-            display: flex;
-            align-items: center;
-            justify-content: space-evenly;
-            margin-left: 2.4rem;
-
-            img {
-                margin-left: 0.8rem;
-                margin-bottom: 1.2rem;
-            }
-        }
-
-        .img-eye {
-            position: relative;
-
-            img {
-                position: absolute;
-                top: 1rem;
-                right: 12rem;
-            }
-        }
-
-        .message-error {
-            color: #FB263C;
-            font-size: 1.2rem;
-            font-family: $font-nunito-sans;
-            font-weight: 300;
-            line-height: normal;
-            margin-top: -1rem;
-            margin-bottom: 2rem;
-            display: flex;
-            justify-content: end;
-
-        }
-
-        .error-label {
-            color: #FB263C;
-            font-weight: 600;
-            font-size: 1.2rem;
-        }
-
-        .error-placeholder::placeholder {
-            color: #FB263C;
-
-        }
-
-        .input-wrapper input {
-
-            border: none;
-            color: #807D7D;
-        }
-
-        .input-wrapper input:focus {
-            border: 2px solid #807D7D;
-        }
-
-        .input-wrapper.error-border input {
-            border: 2px solid #FB263C;
-            width: 32.5rem;
-            height: 4rem;
-
-        }
-
-        .ok-border input {
-            width: 32.5rem;
-        }
-
-        .input-wrapper {
-            display: flex;
-            align-items: center;
-            // gap: 1rem;
-
-        }
+    input,
+    .input-password [type="text"] {
+      width: 31.7rem;
+      height: 4rem;
+      border-radius: 20px;
+      background: #e6e6e6;
+      padding: 2rem;
+      font-size: 1.2rem;
+      font-family: $font-nunito-sans;
+      color: #807d7d;
+      font-style: normal;
+      font-weight: 600;
+      line-height: normal;
+      margin-bottom: 1.6rem;
+      border: none;
     }
+
+    input[type="date"] {
+      width: 31.7rem;
+      height: 2rem;
+      border-radius: 20px;
+      padding: 2rem;
+      font-size: 1.2rem;
+      font-family: $font-nunito-sans;
+      color: #807d7d;
+      font-size: 1.2rem;
+      font-style: normal;
+      font-weight: 600;
+      line-height: normal;
+      text-transform: uppercase;
+      border: none;
+    }
+
+    ::-webkit-calendar-picker-indicator {
+      background: transparent;
+    }
+
+    input:focus {
+      background: #ffffff;
+      font-size: 1.4rem;
+      font-family: $font-nunito-sans;
+      color: #333333;
+      font-style: normal;
+      font-weight: 600;
+      line-height: normal;
+      border-radius: 40px;
+      border: 2px solid #807d7d;
+      outline: 0;
+    }
+
+    label {
+      font-size: 1.2rem;
+      font-family: $font-nunito-sans;
+      color: #333333;
+      font-size: 1.2rem;
+      font-style: normal;
+      font-weight: 300;
+      line-height: normal;
+      margin-bottom: 0.8rem;
+    }
+
+    .input-form {
+      display: flex;
+      flex-direction: column;
+      align-items: baseline;
+    }
+
+    .content-input {
+      display: flex;
+      align-items: center;
+      justify-content: space-evenly;
+      margin-left: 2.4rem;
+
+      img {
+        margin-left: 0.8rem;
+        margin-bottom: 1.2rem;
+      }
+    }
+
+    .img-eye {
+      position: relative;
+
+      img {
+        position: absolute;
+        top: 1rem;
+        right: 12rem;
+      }
+    }
+
+    .message-error {
+      color: #fb263c;
+      font-size: 1.2rem;
+      font-family: $font-nunito-sans;
+      font-weight: 300;
+      line-height: normal;
+      margin-top: -1rem;
+      margin-bottom: 2rem;
+      display: flex;
+      justify-content: end;
+    }
+
+    .error-label {
+      color: #fb263c;
+      font-weight: 600;
+      font-size: 1.2rem;
+    }
+
+    .error-placeholder::placeholder {
+      color: #fb263c;
+    }
+
+    .input-wrapper input {
+      border: none;
+      color: #807d7d;
+    }
+
+    .input-wrapper input:focus {
+      border: 2px solid #807d7d;
+    }
+
+    .input-wrapper.error-border input {
+      border: 2px solid #fb263c;
+      width: 31.5rem;
+      height: 4rem;
+    }
+
+    .ok-border input {
+      width: 31.5rem;
+    }
+
+    .input-wrapper {
+      display: flex;
+      align-items: center;
+      // gap: 1rem;
+    }
+  }
 }

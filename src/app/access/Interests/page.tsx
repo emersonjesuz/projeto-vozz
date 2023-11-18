@@ -1,15 +1,41 @@
 "use client";
-import { FormEvent } from "react";
+import { FormEvent, useState } from "react";
 import styles from "./styles.module.scss";
 import ButtonInterests from "@/components/ButtonInterests";
 import { useRouter } from "next/navigation";
 import Link from "next/link";
+import { InterestTypes } from "@/types/InterestsTypes";
+import { listInterests } from "@/helpers/listInterests";
+import Api from "@/connections/api";
 
 export default function Interests() {
+  const [interests, setInterests] = useState<InterestTypes[]>(listInterests);
   const navegate = useRouter();
 
-  function handleSubmitToInterests(event: FormEvent) {
+  async function handleSubmitToInterests(event: FormEvent) {
     event.preventDefault();
+    const storage = localStorage.getItem("userInfo");
+    if (!storage) return;
+
+    const idProfile = JSON.parse(storage).id;
+
+    const list: string[] = [];
+
+    try {
+      interests.forEach(({ actived, text }) => {
+        if (actived) {
+          return list.push(text);
+        }
+      });
+
+      await Api.put(`/profile/update/${idProfile}`, {
+        interests: list,
+      });
+
+      console.log(list);
+    } catch (error) {
+      console.log(error);
+    }
     navegate.push("/Home/HomePage");
   }
 
@@ -24,30 +50,78 @@ export default function Interests() {
       </div>
       <div className={styles["container-interests-btn"]}>
         <div className={styles["container-btn"]}>
-          <ButtonInterests text="saúde" />
-          <ButtonInterests text="igualdade racial" />
+          <ButtonInterests
+            setInterests={setInterests}
+            interests={interests}
+            text="saúde"
+          />
+          <ButtonInterests
+            setInterests={setInterests}
+            interests={interests}
+            text="igualdade racial"
+          />
         </div>
         <div className={styles["container-btn"]}>
-          <ButtonInterests text="gênero e diversidade" />
-          <ButtonInterests text="educação" />
+          <ButtonInterests
+            setInterests={setInterests}
+            interests={interests}
+            text="gênero e diversidade"
+          />
+          <ButtonInterests
+            setInterests={setInterests}
+            interests={interests}
+            text="educação"
+          />
         </div>
         <div className={styles["container-btn"]}>
-          <ButtonInterests text="meio ambiente" />
-          <ButtonInterests text="direitos humanos e justiça" />
+          <ButtonInterests
+            setInterests={setInterests}
+            interests={interests}
+            text="meio ambiente"
+          />
+          <ButtonInterests
+            setInterests={setInterests}
+            interests={interests}
+            text="direitos humanos e justiça"
+          />
         </div>
         <div className={styles["container-btn"]}>
-          <ButtonInterests text="povos originários e indígenas" />
-          <ButtonInterests text="cultura" />
+          <ButtonInterests
+            setInterests={setInterests}
+            interests={interests}
+            text="povos originários e indígenas"
+          />
+          <ButtonInterests
+            setInterests={setInterests}
+            interests={interests}
+            text="cultura"
+          />
         </div>
         <div className={styles["container-btn"]}>
-          <ButtonInterests text="direito das mulheres" />
-          <ButtonInterests text="economia e trabalho" />
+          <ButtonInterests
+            setInterests={setInterests}
+            interests={interests}
+            text="direito das mulheres"
+          />
+          <ButtonInterests
+            setInterests={setInterests}
+            interests={interests}
+            text="economia e trabalho"
+          />
         </div>
         <div className={styles["container-btn"]}>
-          <ButtonInterests text="ciência e tecnologia" />
+          <ButtonInterests
+            setInterests={setInterests}
+            interests={interests}
+            text="ciência e tecnologia"
+          />
         </div>
       </div>
-      <button onClick={handleSubmitToInterests} className={styles["btn"]}>
+      <button
+        type="button"
+        onClick={handleSubmitToInterests}
+        className={styles["btn"]}
+      >
         Avançar
       </button>
       <Link href={"/HomePage"} className={styles["next"]}>

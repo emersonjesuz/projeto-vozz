@@ -15,6 +15,16 @@ type NewError = {
   code?: string;
 };
 
+type UserType = {
+  name: string;
+  email: string | null;
+  birthday: string;
+  password: string | null;
+  actived: boolean;
+  delete: boolean;
+  uid: string | null;
+};
+
 function Register() {
   const navegate = useRouter();
   const [errors, setErrors] = useState<NewError>({
@@ -45,35 +55,46 @@ function Register() {
     try {
       if (!name) {
         newErrors.name = "O nome é obrigatório.";
+        return;
       }
 
       if (!email || email.search(checkEmail) === -1) {
         newErrors.email = !email
           ? "O email é obrigatório."
           : "Confira se você digitou corretamente.";
+        return;
       }
 
       if (!birthday) {
         newErrors.birthday = "A data de nascimento é obrigatória.";
+        return;
       }
 
       if (!password || password.length < 8) {
         newErrors.password = !password
           ? "Digite uma senha."
           : "Deve conter pelo menos 8 caracteres.";
+        return;
       }
       setShowImage(true);
       setErrors(newErrors);
 
-      const response = await api.post("/registerUser", {
+      await api.post("/create", {
         name,
         email,
-        birthday,
+        birth: birthday,
         password,
       });
-      console.log(response);
+
+      const { data } = await api.post("/login", { email, password });
+
+      const userId = { id: data.user.id };
+      localStorage.setItem("userInfo", JSON.stringify(userId));
+
       navegate.push("/access/Perfil");
     } catch (error: any) {
+      console.log(error);
+
       setErrors(newErrors);
     }
   }
@@ -137,66 +158,13 @@ function Register() {
               iconSrc={errors.password ? errorIcon : checkIcon}
             />
             <div className={styles["button"]}>
-              <button type="submit">Cadastrar</button>
+              <button className="button-blue" type="submit">
+                Cadastrar
+              </button>
             </div>
           </div>
         </form>
       </div>
-
-      <form onSubmit={handleSubmit}>
-        <div className={styles["form-register"]}>
-          <Input
-            type="text"
-            label="Nome"
-            name="name"
-            placeholder="nome completo"
-            value={name}
-            handleChange={(event) => setName(event.target.value)}
-            showImage={showImage}
-            errorMessage={errors.name}
-            iconSrc={errors.name ? errorIcon : checkIcon}
-          />
-          <Input
-            type="text"
-            label="E-mail"
-            name="email"
-            placeholder="e-mail"
-            value={email}
-            handleChange={(event) => setEmail(event.target.value)}
-            showImage={showImage}
-            errorMessage={errors.email}
-            iconSrc={errors.email ? errorIcon : checkIcon}
-          />
-          <Input
-            type="date"
-            label="Data de nascimento"
-            name="birthday"
-            placeholder="DD/MM/AAAA"
-            value={birthday}
-            handleChange={(event) => setBirthday(event.target.value)}
-            showImage={showImage}
-            errorMessage={errors.birthday}
-            iconSrc={errors.birthday ? errorIcon : checkIcon}
-          />
-          <div className={styles["eyes"]}></div>
-          <Input
-            type={"password"}
-            label="Defina uma senha"
-            name="password"
-            placeholder="insira aqui sua senha"
-            value={password}
-            handleChange={(event) => setPassword(event.target.value)}
-            showImage={showImage}
-            errorMessage={errors.password}
-            iconSrc={errors.password ? errorIcon : checkIcon}
-          />
-          <div className={styles["button"]}>
-            <button className="button-blue" type="submit">
-              Cadastrar
-            </button>
-          </div>
-        </div>
-      </form>
     </div>
   );
 }

@@ -14,6 +14,7 @@ import Pincel from "../../assets/Home/Pincel.svg";
 import Clip from "../../assets/Home/clip.svg";
 import styles from "./styles.module.scss";
 import { useGlobalContext } from "@/contexts/ContextHome";
+import HomeFooter from "@/components/HomeFooter";
 
 export default function HomePage() {
   const { modal } = useGlobalContext();
@@ -70,30 +71,22 @@ export default function HomePage() {
           </div>
         </div>
         {/* Fazer disso abaixo um componente */}
-        <Publication />
-        {modal && <PerfilUser />}
+        <Publication
+          id={0}
+          profileId={0}
+          name={"emerson"}
+          userName={""}
+          photo={""}
+          profileChecked={false}
+          date={""}
+          file={""}
+          description={""}
+          public_likes={0}
+          public_comments={0}
+        />
+        {!modal && <PerfilUser />}
       </div>
-      <div className={styles["footerHome"]}>
-        <div className={styles["select"]}>
-          <Image src={IconHome} alt="Home" />
-        </div>
-        <div>
-          <Image src={Student} alt="Aprender" />
-          <h4>Aprender</h4>
-        </div>
-        <div>
-          <Image src={Particip} alt="Participar" />
-          <h4>Participar</h4>
-        </div>
-        <div>
-          <Image src={Ativ} alt="Atividades" />
-          <h4>Atividades</h4>
-        </div>
-        <div>
-          <Image src={Conver} alt="Conversas" />
-          <h4>Conversas</h4>
-        </div>
-      </div>
+      <HomeFooter />
     </div>
   );
 }
