@@ -44,16 +44,41 @@ export default function HomePage() {
   const [countIndex, setCountIndex] = useState(1);
   const [callApi, setCallApi] = useState(true);
 
-  useEffect(() => {
-    const getFeed = async () => {
-      try {
-        const response = await Api.get(`/feed/1`);
-        const responseData: Feed[] = response.data;
-        setData([...responseData]);
-      } catch (error) {
-        console.log(error);
+  const getFeed = async () => {
+    try {
+      const response = await Api.get(`/feed/1`);
+      const responseData: Feed[] = response.data;
+      setData([...responseData]);
+    } catch (error) {
+      console.log(error);
+    }
+  };
+
+  const handleScroll = async () => {
+    const scrollTop = window.scrollY;
+    const scrollHeight = document.documentElement.scrollHeight;
+    const clientHeight = document.documentElement.clientHeight;
+    const scrollPercentage = (scrollTop / (scrollHeight - clientHeight)) * 100;
+
+    if (scrollPercentage > 80 && scrollPercentage < 85) {
+      setCallApi(false);
+      const response = await Api.get(`/feed/${countIndex}`);
+      const responseData: Feed[] = response.data;
+
+      if (responseData.length > 0) {
+        setData([...data, ...responseData]);
+        setCountIndex(countIndex + 1);
+
+        if (responseData.length >= 10) {
+          setTimeout(() => {
+            setCallApi(true);
+          }, 3000);
+        }
       }
-    };
+    }
+  };
+
+  useEffect(() => {
     if (countIndex == 1 && callApi) {
       setCallApi(false);
       setCountIndex(2);
@@ -63,41 +88,11 @@ export default function HomePage() {
         setCallApi(true);
       }, 3000);
     }
+
+    if (countIndex > 1 && callApi) {
+      window.addEventListener("scroll", handleScroll);
+    }
   }, []);
-
-  // useEffect(() => {
-  if (countIndex > 1 && callApi) {
-    const handleScroll = async () => {
-      const scrollTop = window.scrollY;
-      const scrollHeight = document.documentElement.scrollHeight;
-      const clientHeight = document.documentElement.clientHeight;
-      const scrollPercentage =
-        (scrollTop / (scrollHeight - clientHeight)) * 100;
-
-      if (scrollPercentage > 80 && scrollPercentage < 85) {
-        setCallApi(false);
-        const response = await Api.get(`/feed/${countIndex}`);
-        const responseData: Feed[] = response.data;
-
-        if (responseData.length > 0) {
-          setData([...data, ...responseData]);
-          setCountIndex(countIndex + 1);
-
-          if (responseData.length >= 10) {
-            setTimeout(() => {
-              setCallApi(true);
-            }, 3000);
-          }
-        }
-      }
-      // console.log(countIndex);
-      // console.log(data);
-      // console.log('Posição de rolagem:', scrollPercentage, '%');
-    };
-
-    window.addEventListener("scroll", handleScroll);
-  }
-  // }, [countIndex]);
 
   const handleInputFocus = () => {
     setIsInputFocused(true);
