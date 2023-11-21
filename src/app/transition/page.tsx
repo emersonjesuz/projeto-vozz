@@ -6,10 +6,15 @@ import Image from "next/image";
 import { useRouter } from "next/navigation";
 export default function TransiationPage() {
   const navegate = useRouter();
-  useEffect(() => {
+
+  function transition() {
     setTimeout(() => {
       navegate.push("/Onboarding");
     }, 3000);
+  }
+
+  useEffect(() => {
+    transition();
   }, []);
   return (
     <div className={styles.container}>

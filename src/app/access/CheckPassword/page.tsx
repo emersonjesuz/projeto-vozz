@@ -3,6 +3,7 @@ import styles from "./styles.module.scss";
 import { FormEvent, useState } from "react";
 import errorIcon from "../../../assets/icons/error-icon.svg";
 import checkIcon from "../../../assets/icons/check.svg";
+import Image from "next/image";
 
 type NewError = {
   name: string;
@@ -77,13 +78,13 @@ export default function CheckPassword() {
                   onChange={(event) => setEmail(event.target.value)}
                 />
                 {errors.email ? (
-                  <img
+                  <Image
                     className={styles["error-icon"]}
                     src={errorIcon}
                     alt="Erro"
                   />
                 ) : emailValid ? (
-                  <img
+                  <Image
                     className={styles["check-icon"]}
                     src={checkIcon}
                     alt="OK"

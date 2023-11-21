@@ -47,7 +47,6 @@ export default function HomePage() {
     try {
       const { data } = await Api.get(`/feed/1`);
       const responseData: Feed[] = data;
-      console.log(data);
 
       setData([...responseData]);
     } catch (error) {
@@ -93,7 +92,7 @@ export default function HomePage() {
     if (countIndex > 1 && callApi) {
       window.addEventListener("scroll", handleScroll);
     }
-  }, []);
+  }, [countIndex, callApi]);
 
   const handleInputFocus = () => {
     setIsInputFocused(true);
