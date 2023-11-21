@@ -1,12 +1,12 @@
 "use client";
+import ButtonInterests from "@/components/ButtonInterests";
+import Api from "@/connections/api";
+import { listInterests } from "@/helpers/listInterests";
+import { InterestTypes } from "@/types/InterestsTypes";
+import Link from "next/link";
+import { useRouter } from "next/navigation";
 import { FormEvent, useState } from "react";
 import styles from "./styles.module.scss";
-import ButtonInterests from "@/components/ButtonInterests";
-import { useRouter } from "next/navigation";
-import Link from "next/link";
-import { InterestTypes } from "@/types/InterestsTypes";
-import { listInterests } from "@/helpers/listInterests";
-import Api from "@/connections/api";
 
 export default function Interests() {
   const [interests, setInterests] = useState<InterestTypes[]>(listInterests);

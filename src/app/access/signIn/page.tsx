@@ -1,12 +1,11 @@
 "use client";
 import CheckBox from "@/components/CheckBox";
 import AccountFirebase from "@/components/accountFirebase";
-import { signIn } from "next-auth/react";
+import Api from "@/connections/api";
 import Link from "next/link";
 import { useRouter } from "next/navigation";
 import { SyntheticEvent, useState } from "react";
 import styles from "./styles.module.scss";
-import Api from "@/connections/api";
 
 export default function SignIn() {
   const [email, setEmail] = useState<string>("");
@@ -61,7 +60,7 @@ export default function SignIn() {
             type="password"
             onChange={(event) => setPassword(event?.target.value)}
           />
-          {/* verificar possiveis alterções */}
+
           <Link href={"/"}>Esqueci minha senha</Link>
         </div>
         <button type="submit" className="button-blue">

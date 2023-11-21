@@ -7,7 +7,6 @@ export default function AccessLayout({
   return (
     <div>
       <Header />
-
       {children}
     </div>
   );

@@ -1,9 +1,9 @@
 "use client";
-import styles from "./styles.module.scss";
-import { FormEvent, useState } from "react";
-import errorIcon from "../../../assets/icons/error-icon.svg";
-import checkIcon from "../../../assets/icons/check.svg";
 import Image from "next/image";
+import { FormEvent, useState } from "react";
+import checkIcon from "../../../assets/icons/check.svg";
+import errorIcon from "../../../assets/icons/error-icon.svg";
+import styles from "./styles.module.scss";
 
 type NewError = {
   name: string;

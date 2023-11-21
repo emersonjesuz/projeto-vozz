@@ -29,10 +29,7 @@ export default function AccountFirebase() {
       if (!name || !uid) return console.log("problemas");
 
       await createAccount(name, uid);
-
-      navegate.push("/access/Perfil");
     } catch (error) {
-      console.log(error);
       console.log("forma de login indisponivel no momento");
     }
   }
@@ -44,7 +41,6 @@ export default function AccountFirebase() {
       const result = await signInWithPopup(auth, provider);
 
       console.log(result);
-      navegate.push("/access/Perfil");
     } catch (error) {
       console.log(error);
     }
@@ -58,6 +54,13 @@ export default function AccountFirebase() {
       });
 
       localStorage.setItem("token", data.token);
+
+      const { data: profile } = await Api.get(`/profile/${data.user.id}`);
+
+      if (profile) {
+        return navegate.replace("/Home");
+      }
+      navegate.push("/access/Perfil");
     } catch (error) {
       console.log(error);
     }
