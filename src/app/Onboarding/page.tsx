@@ -3,11 +3,12 @@ import { screens } from "@/helpers/screens";
 import Image from "next/image";
 import Link from "next/link";
 import { useRouter } from "next/navigation";
-import { FormEvent, useState } from "react";
+import { FormEvent, useEffect, useState } from "react";
 import BtnReturnGray from "../../assets/header/arrow-left-gray.svg";
 import BtnForward from "../../assets/onboarding/btn-forward.svg";
 import BtnReturn from "../../assets/onboarding/btn-return.svg";
 import styles from "./styles.module.scss";
+import { getItem } from "@/utils/storage";
 
 type Screen = {
   image: string;
@@ -19,9 +20,7 @@ type Screen = {
 };
 
 export default function Onboarding() {
-  const [screen, setScreen] = useState<Screen>(
-    localStorage.getItem("isLogin") ? screens.screen4 : screens.screen1
-  );
+  const [screen, setScreen] = useState<Screen>(screens.screen1);
   const navegate = useRouter();
 
   function forwardScreen(event: FormEvent) {
@@ -66,6 +65,12 @@ export default function Onboarding() {
     event.preventDefault();
     navegate.push("/access/SignUp");
   }
+
+  useEffect(() => {
+    const storege = getItem("isLogin");
+    const historic: boolean = JSON.parse(storege ?? "false");
+    setScreen(historic ? screens.screen4 : screens.screen1);
+  }, []);
 
   return (
     <div className={styles.container_page}>
