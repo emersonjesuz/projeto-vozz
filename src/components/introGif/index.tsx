@@ -7,7 +7,6 @@ import logoWhiteImage from "../../assets/logos/logo-white-complete.svg";
 export default function IntroGif() {
   const navegate = useRouter();
   useEffect(() => {
-    navegate.prefetch("/Onboarding");
     setTimeout(() => {
       navegate.push("/transition");
     }, 2000);

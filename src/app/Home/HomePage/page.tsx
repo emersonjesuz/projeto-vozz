@@ -13,7 +13,7 @@ import Particip from "../../../assets/Home/Icone_Participar Off.svg";
 import Pincel from "../../../assets/Home/Pincel.svg";
 import Clip from "../../../assets/Home/clip.svg";
 import styles from "./styles.module.scss";
-/* import useHome from '@/hooks/Home/useHome'; */
+
 import Api from "@/connections/api";
 import { useGlobalContext } from "@/contexts/ContextHome";
 
@@ -36,11 +36,10 @@ type PageProps = {
 };
 
 export default function HomePage() {
-  /* const { isAtivedPerfilUser } = useHome(); */
   const { modal, data, setData } = useGlobalContext();
   const [isInputFocused, setIsInputFocused] = useState(false);
   const [description, setDescription] = useState("");
-  // const [feed, setFeed] = useState<Feed[]>(data);
+
   const [countIndex, setCountIndex] = useState(1);
   const [callApi, setCallApi] = useState(true);
 
@@ -190,7 +189,7 @@ export default function HomePage() {
             public_comments={publication.public_comments}
           />
         ))}
-        {/*  {isAtivedPerfilUser && <PerfilUser />} */}
+
         {modal && <PerfilUser />}
       </div>
       <div className={styles["footerHome"]}>
