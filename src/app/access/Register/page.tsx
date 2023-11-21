@@ -93,8 +93,6 @@ function Register() {
 
       navegate.push("/access/signIn");
     } catch (error: any) {
-      console.log(error);
-
       setErrors(newErrors);
     }
   }
