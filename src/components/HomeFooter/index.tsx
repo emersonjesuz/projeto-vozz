@@ -1,4 +1,3 @@
-"use client";
 import Image from "next/image";
 import Student from "../../assets/Home/Icone_Aprender Off.svg";
 import Ativ from "../../assets/Home/Icone_Atividades Off.svg";

@@ -26,10 +26,6 @@ type Feed = {
   public_comments: number;
 };
 
-type PageProps = {
-  pubsData: Feed[];
-};
-
 export default function HomePage() {
   const { modal, data, setData } = useGlobalContext();
   const [isInputFocused, setIsInputFocused] = useState(false);

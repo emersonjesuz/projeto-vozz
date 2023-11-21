@@ -2,7 +2,7 @@ import axios from "axios";
 // import { getItemLocalStore } from "../helpers/index.ts";
 
 const Api = axios.create({
-  baseURL: "https://zany-teal-wasp-fez.cyclic.app", //"http://localhost:3001", //
+  baseURL: "https://zany-teal-wasp-fez.cyclic.app",
   timeout: 10000,
   headers: { "Contente-Type": "application/json" },
 });
