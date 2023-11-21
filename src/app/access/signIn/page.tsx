@@ -6,6 +6,7 @@ import Link from "next/link";
 import { useRouter } from "next/navigation";
 import { SyntheticEvent, useState } from "react";
 import styles from "./styles.module.scss";
+import Api from "@/connections/api";
 
 export default function SignIn() {
   const [email, setEmail] = useState<string>("");
@@ -14,19 +15,14 @@ export default function SignIn() {
 
   async function handleSubmit(event: SyntheticEvent) {
     event.preventDefault();
-    const result = await signIn("credentials", {
+    const { data } = await Api.post("/login", {
       email,
       password,
-      redirect: false,
     });
 
-    if (result?.error) {
-      console.log(result);
-      return;
-    }
+    localStorage.setItem("token", data.token);
 
     navegate.replace("/access/Perfil");
-    console.log("ola");
   }
 
   return (

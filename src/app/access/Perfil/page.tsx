@@ -56,7 +56,7 @@ export default function Perfil() {
         userId: id,
         type: typeProfile,
       });
-      console.log(data);
+
       const profileId = { id: data.id };
       localStorage.setItem("userInfo", JSON.stringify(profileId));
 

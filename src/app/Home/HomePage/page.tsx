@@ -46,8 +46,10 @@ export default function HomePage() {
 
   const getFeed = async () => {
     try {
-      const response = await Api.get(`/feed/1`);
-      const responseData: Feed[] = response.data;
+      const { data } = await Api.get(`/feed/1`);
+      const responseData: Feed[] = data;
+      console.log(data);
+
       setData([...responseData]);
     } catch (error) {
       console.log(error);
@@ -62,10 +64,10 @@ export default function HomePage() {
 
     if (scrollPercentage > 80 && scrollPercentage < 85) {
       setCallApi(false);
-      const response = await Api.get(`/feed/${countIndex}`);
-      const responseData: Feed[] = response.data;
+      const { data } = await Api.get(`/feed/${countIndex}`);
+      const responseData: Feed[] = data;
 
-      if (responseData.length > 0) {
+      if (responseData.length) {
         setData([...data, ...responseData]);
         setCountIndex(countIndex + 1);
 
@@ -105,17 +107,22 @@ export default function HomePage() {
   };
 
   const handleSubmitPost = async () => {
-    const profileId: number = Number(localStorage.getItem("profileId"));
+    const storage = localStorage.getItem("userInfo");
+    if (!storage) return;
+    const user: { id: number } = JSON.parse(storage);
+
+    const profileId: number = Number(user.id);
 
     try {
-      const response = await Api.post("/publications", {
+      const { data: newData } = await Api.post("/publications", {
         profileId,
         file: "",
         description,
       });
 
       setDescription("");
-      data.unshift(response.data);
+
+      setData([newData, ...data]);
     } catch (error) {
       console.log(error);
     }

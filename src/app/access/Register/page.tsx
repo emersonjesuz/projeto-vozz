@@ -91,7 +91,7 @@ function Register() {
       const userId = { id: data.user.id };
       localStorage.setItem("userInfo", JSON.stringify(userId));
 
-      navegate.push("/access/Perfil");
+      navegate.push("/access/signIn");
     } catch (error: any) {
       console.log(error);
 
