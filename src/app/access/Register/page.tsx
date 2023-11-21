@@ -4,8 +4,8 @@ import checkIcon from "../../../assets/icons/check.svg";
 import errorIcon from "../../../assets/icons/error-icon.svg";
 import Input from "../../../components/Input";
 import styles from "./styles.module.scss";
-import api from "../../../services/axios";
 import { useRouter } from "next/navigation";
+import Api from "@/connections/api";
 
 type NewError = {
   name: string;
@@ -79,16 +79,14 @@ function Register() {
       setShowImage(true);
       setErrors(newErrors);
 
-      await api.post("/create", {
+      const { data } = await Api.post("/create", {
         name,
         email,
         birth: birthday,
         password,
       });
 
-      const { data } = await api.post("/login", { email, password });
-
-      const userId = { id: data.user.id };
+      const userId = { id: data.id };
       localStorage.setItem("userInfo", JSON.stringify(userId));
 
       navegate.push("/access/signIn");
