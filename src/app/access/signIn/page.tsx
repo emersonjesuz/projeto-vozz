@@ -15,14 +15,25 @@ export default function SignIn() {
 
   async function handleSubmit(event: SyntheticEvent) {
     event.preventDefault();
-    const { data } = await Api.post("/login", {
-      email,
-      password,
-    });
 
-    localStorage.setItem("token", data.token);
+    try {
+      const { data } = await Api.post("/login", {
+        email,
+        password,
+      });
 
-    navegate.replace("/access/Perfil");
+      localStorage.setItem("token", data.token);
+
+      const { data: profile } = await Api.get(`/profile/${data.user.id}`);
+
+      if (profile) {
+        return navegate.replace("/Home");
+      }
+
+      navegate.replace("/access/Perfil");
+    } catch (error) {
+      console.log(error);
+    }
   }
 
   return (

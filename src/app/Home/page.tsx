@@ -1,32 +1,129 @@
 "use client";
-import PerfilUser from "../../components/PerfilUser/index";
+import HomeFooter from "@/components/HomeFooter";
 import Publication from "@/components/Publication";
+import Api from "@/connections/api";
+import { useGlobalContext } from "@/contexts/ContextHome";
 import Image from "next/image";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import Arrow from "../../assets/Home/Arrow.svg";
 import Can from "../../assets/Home/Can.svg";
-import Student from "../../assets/Home/Icone_Aprender Off.svg";
-import Ativ from "../../assets/Home/Icone_Atividades Off.svg";
-import Conver from "../../assets/Home/Icone_Conversas Off.svg";
-import IconHome from "../../assets/Home/Icone_Home On.svg";
-import Particip from "../../assets/Home/Icone_Participar Off.svg";
 import Pincel from "../../assets/Home/Pincel.svg";
 import Clip from "../../assets/Home/clip.svg";
+import PerfilUser from "../../components/PerfilUser/index";
 import styles from "./styles.module.scss";
-import { useGlobalContext } from "@/contexts/ContextHome";
-import HomeFooter from "@/components/HomeFooter";
+
+type Feed = {
+  id: number;
+  profileId: number;
+  name: string;
+  userName: string;
+  photo: string;
+  profileChecked: boolean;
+  date: string;
+  file: string;
+  description: string;
+  public_likes: number;
+  public_comments: number;
+};
+
+type PageProps = {
+  pubsData: Feed[];
+};
 
 export default function HomePage() {
-  const { modal } = useGlobalContext();
+  const { modal, data, setData } = useGlobalContext();
   const [isInputFocused, setIsInputFocused] = useState(false);
+  const [description, setDescription] = useState("");
+
+  const [countIndex, setCountIndex] = useState(1);
+  const [callApi, setCallApi] = useState(true);
+
+  const getFeed = async () => {
+    try {
+      const { data } = await Api.get(`/feed/1`);
+      const responseData: Feed[] = data;
+
+      setData([...responseData]);
+    } catch (error) {
+      console.log(error);
+    }
+  };
+
+  const handleScroll = async () => {
+    const scrollTop = window.scrollY;
+    const scrollHeight = document.documentElement.scrollHeight;
+    const clientHeight = document.documentElement.clientHeight;
+    const scrollPercentage = (scrollTop / (scrollHeight - clientHeight)) * 100;
+
+    if (scrollPercentage > 80 && scrollPercentage < 85) {
+      setCallApi(false);
+      const response = await Api.get(`/feed/${countIndex}`);
+      const responseData: Feed[] = response.data;
+
+      if (responseData.length) {
+        setData([...data, ...responseData]);
+        setCountIndex(countIndex + 1);
+
+        if (responseData.length >= 10) {
+          setTimeout(() => {
+            setCallApi(true);
+          }, 3000);
+        }
+      }
+    }
+  };
+
+  async function checkFunction() {
+    if (countIndex == 1 && callApi) {
+      setCallApi(false);
+      setCountIndex(2);
+      await getFeed();
+
+      setTimeout(() => {
+        setCallApi(true);
+      }, 3000);
+    }
+
+    if (countIndex > 1 && callApi) {
+      window.addEventListener("scroll", handleScroll);
+    }
+  }
 
   const handleInputFocus = () => {
     setIsInputFocused(true);
   };
 
   const handleInputBlur = () => {
-    setIsInputFocused(false);
+    setTimeout(() => {
+      setIsInputFocused(false);
+    }, 25);
   };
+
+  const handleSubmitPost = async () => {
+    const storage = localStorage.getItem("userInfo");
+    if (!storage) return;
+    const user: { id: number } = JSON.parse(storage);
+
+    const profileId: number = Number(user.id);
+
+    try {
+      const { data: newData } = await Api.post("/publications", {
+        profileId,
+        file: "",
+        description,
+      });
+
+      setDescription("");
+
+      setData([newData, ...data]);
+    } catch (error) {
+      console.log(error);
+    }
+  };
+
+  useEffect(() => {
+    checkFunction();
+  });
 
   return (
     <div className={styles["containerHome"]}>
@@ -39,8 +136,11 @@ export default function HomePage() {
       <div className={styles["containerMain"]}>
         <div className={styles["publication"]}>
           <label>Criar nova publicação</label>
-          {/* <textarea cols="30" rows="5" wrap='harp'></textarea> */}
+
           <input
+            name="description"
+            value={description}
+            onChange={(event) => setDescription(event.target.value)}
             type="text"
             placeholder={`${isInputFocused ? "" : "escrever..."}`}
             onFocus={handleInputFocus}
@@ -65,26 +165,30 @@ export default function HomePage() {
             <button>
               <Image src={Can} alt="Camera" />
             </button>
-            <button className={styles["btnPublic"]}>
+            <button className={styles["btnPublic"]} onClick={handleSubmitPost}>
               <Image src={Arrow} alt="Seta" />
             </button>
           </div>
         </div>
-        {/* Fazer disso abaixo um componente */}
-        <Publication
-          id={0}
-          profileId={0}
-          name={"emerson"}
-          userName={""}
-          photo={""}
-          profileChecked={false}
-          date={""}
-          file={""}
-          description={""}
-          public_likes={0}
-          public_comments={0}
-        />
-        {!modal && <PerfilUser />}
+
+        {data.map((publication: Feed) => (
+          <Publication
+            key={publication.id}
+            id={publication.id}
+            profileId={publication.profileId}
+            name={publication.name}
+            userName={publication.userName}
+            photo={publication.photo}
+            profileChecked={publication.profileChecked}
+            date={publication.date}
+            file={publication.file}
+            description={publication.description}
+            public_likes={publication.public_likes}
+            public_comments={publication.public_comments}
+          />
+        ))}
+
+        {modal && <PerfilUser />}
       </div>
       <HomeFooter />
     </div>

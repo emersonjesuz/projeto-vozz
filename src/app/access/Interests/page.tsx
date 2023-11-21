@@ -31,12 +31,10 @@ export default function Interests() {
       await Api.put(`/profile/update/${idProfile}`, {
         interests: list,
       });
-
-      console.log(list);
     } catch (error) {
       console.log(error);
     }
-    navegate.push("/Home/HomePage");
+    navegate.push("/Home");
   }
 
   return (
