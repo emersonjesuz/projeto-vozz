@@ -10,6 +10,6 @@ export default function IntroGif() {
     setTimeout(() => {
       navegate.push("/transition");
     }, 2000);
-  }, []);
+  });
   return <Image src={logoWhiteImage} alt={"logo"} />;
 }

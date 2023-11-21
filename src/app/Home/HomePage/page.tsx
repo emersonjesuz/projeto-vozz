@@ -78,11 +78,11 @@ export default function HomePage() {
     }
   };
 
-  useEffect(() => {
+  async function checkFunction() {
     if (countIndex == 1 && callApi) {
       setCallApi(false);
       setCountIndex(2);
-      getFeed();
+      await getFeed();
 
       setTimeout(() => {
         setCallApi(true);
@@ -92,7 +92,7 @@ export default function HomePage() {
     if (countIndex > 1 && callApi) {
       window.addEventListener("scroll", handleScroll);
     }
-  }, [countIndex, callApi]);
+  }
 
   const handleInputFocus = () => {
     setIsInputFocused(true);
@@ -126,6 +126,10 @@ export default function HomePage() {
     }
   };
 
+  useEffect(() => {
+    checkFunction();
+  });
+
   return (
     <div className={styles["containerHome"]}>
       <nav>
@@ -137,7 +141,7 @@ export default function HomePage() {
       <div className={styles["containerMain"]}>
         <div className={styles["publication"]}>
           <label>Criar nova publicação</label>
-          {/* <textarea cols="30" rows="5" wrap='harp'></textarea> */}
+
           <input
             name="description"
             value={description}
@@ -171,7 +175,7 @@ export default function HomePage() {
             </button>
           </div>
         </div>
-        {/* Fazer disso abaixo um componente */}
+
         {data.map((publication: Feed) => (
           <Publication
             key={publication.id}

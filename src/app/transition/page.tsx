@@ -15,7 +15,7 @@ export default function TransiationPage() {
 
   useEffect(() => {
     transition();
-  }, []);
+  });
   return (
     <div className={styles.container}>
       <Image src={logoAnimation} alt="logo" />
