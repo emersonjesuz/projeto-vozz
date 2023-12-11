@@ -3,7 +3,7 @@ import { useState, FormEvent } from "react";
 import iconFace1 from "../../../assets/icons/face1.svg";
 import iconFace2 from "../../../assets/icons/face2.svg";
 import iconFace3 from "../../../assets/icons/face3.svg";
-import CardPerfil from "../../../components/CardPerfil";
+import CardPerfil from "./components/CardPerfil";
 import styles from "./styles.module.scss";
 import { useRouter } from "next/navigation";
 import Api from "@/connections/api";

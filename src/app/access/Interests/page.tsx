@@ -1,5 +1,5 @@
 "use client";
-import ButtonInterests from "@/components/ButtonInterests";
+import ButtonInterests from "@/app/access/Interests/components/ButtonInterests";
 import Api from "@/connections/api";
 import { listInterests } from "@/helpers/listInterests";
 import { InterestTypes } from "@/types/InterestsTypes";

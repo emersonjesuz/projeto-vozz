@@ -1,6 +1,6 @@
 "use client";
-import HomeFooter from "@/components/HomeFooter";
-import Publication from "@/components/Publication";
+import HomeFooter from "@/app/Home/components/HomeFooter";
+import Publication from "@/app/Home/components/Publication";
 import Api from "@/connections/api";
 import { useGlobalContext } from "@/contexts/ContextHome";
 import Image from "next/image";
@@ -9,7 +9,7 @@ import Arrow from "../../assets/Home/Arrow.svg";
 import Can from "../../assets/Home/Can.svg";
 import Pincel from "../../assets/Home/Pincel.svg";
 import Clip from "../../assets/Home/clip.svg";
-import PerfilUser from "../../components/PerfilUser/index";
+import PerfilUser from "./components/PerfilUser/index";
 import styles from "./styles.module.scss";
 
 type Feed = {

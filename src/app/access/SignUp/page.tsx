@@ -1,6 +1,6 @@
 import CheckBox from "@/components/CheckBox";
 import AccountFirebase from "@/components/accountFirebase";
-import ButtonSignUn from "@/components/buttonSignup";
+import ButtonSignUn from "@/app/access/SignUp/components/buttonSignup";
 import styles from "./styles.module.scss";
 
 export default function SignUn() {
